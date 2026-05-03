@@ -9,11 +9,10 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import WorkIcon from '@mui/icons-material/Work';
+import { alpha } from '@mui/material/styles';
 import { sortedExperiences } from '../../data/experience';
 
 export default function Experience() {
-
-
   return (
     <Box
       id="experience"
@@ -49,7 +48,6 @@ export default function Experience() {
           Professional Experience
         </Typography>
 
-
         {/* Experiência Profissional */}
         <Timeline position="alternate">
           {sortedExperiences.map((exp, index) => (
@@ -58,7 +56,7 @@ export default function Experience() {
                 {exp.year}
               </TimelineOppositeContent>
               <TimelineSeparator>
-                <TimelineDot color="primary">
+                <TimelineDot>
                   <WorkIcon />
                 </TimelineDot>
                 {index < sortedExperiences.length - 1 && <TimelineConnector />}
@@ -67,18 +65,43 @@ export default function Experience() {
                 <Typography variant="h6" sx={{ fontWeight: 600 }}>
                   {exp.title}
                 </Typography>
-                <Typography variant="subtitle2" color="primary" sx={{ mb: 1 }}>
+                <Typography variant="subtitle2" color="primary" sx={{ mb: 1.5 }}>
                   {exp.company}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
                   {exp.description}
                 </Typography>
-                {exp.details && (
-                  <Box sx={{ mt: 1 }}>
+                
+                {/* Details melhor alinhado */}
+                {exp.details && exp.details.length > 0 && (
+                  <Box sx={{ mt: 1.5, pl: 2 }}>
                     {exp.details.map((detail, i) => (
-                      <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-                        <Box sx={{ width: 4, height: 4, borderRadius: '50%', bgcolor: 'primary.main' }} />
-                        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                      <Box 
+                        key={i} 
+                        sx={{ 
+                          display: 'flex', 
+                          alignItems: 'flex-start', 
+                          gap: 1.5, 
+                          mb: 1,
+                        }}
+                      >
+                        <Box 
+                          sx={{ 
+                            width: 6, 
+                            height: 6, 
+                            borderRadius: '50%', 
+                            bgcolor: 'primary.main',
+                            mt: 0.8,
+                            flexShrink: 0,
+                          }} 
+                        />
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            color: 'text.secondary',
+                            lineHeight: 1.5,
+                          }}
+                        >
                           {detail}
                         </Typography>
                       </Box>
@@ -89,43 +112,6 @@ export default function Experience() {
             </TimelineItem>
           ))}
         </Timeline>
-
-        {/* Disciplinas Ministradas */}
-        {/*<Typography
-          variant="h4"
-          component="h3"
-          sx={{
-            mt: 4,
-            mb: 3,
-            fontWeight: 600,
-            color: 'primary.main',
-          }}
-        >
-          Disciplinas Ministradas
-        </Typography>
-        <Timeline position="left">
-          {sortedTeaching.map((item, index) => (
-            <TimelineItem key={`teaching-${index}`}>
-              <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary">
-                {item.period}
-              </TimelineOppositeContent>
-              <TimelineSeparator>
-                <TimelineDot color="secondary">
-                  <SchoolIcon />
-                </TimelineDot>
-                {index < sortedTeaching.length - 1 && <TimelineConnector />}
-              </TimelineSeparator>
-              <TimelineContent sx={{ py: '12px', px: 2 }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                  {item.course}
-                </Typography>
-                <Typography variant="caption" color="secondary" sx={{ display: 'block' }}>
-                  {item.level} - {item.institution}
-                </Typography>
-              </TimelineContent>
-            </TimelineItem>
-          ))}
-        </Timeline> */}
       </Container>
     </Box>
   );
