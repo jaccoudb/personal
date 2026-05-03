@@ -9,32 +9,10 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import WorkIcon from '@mui/icons-material/Work';
-import { alpha } from '@mui/material/styles';
+import { sortedExperiences } from '../../data/experience';
 
 export default function Experience() {
-  const experiences = [
-    {
-      year: '2022 - Presente',
-      title: 'Senior Research Scientist',
-      company: 'Instituto de Pesquisas Avançadas',
-      description: 'Liderança em projetos de IA e machine learning. Desenvolvimento de soluções inovadoras para análise de dados em larga escala.',
-      technologies: ['Python', 'TensorFlow', 'PyTorch', 'AWS'],
-    },
-    {
-      year: '2019 - 2022',
-      title: 'Research Associate',
-      company: 'Laboratório de Inteligência Artificial - USP',
-      description: 'Pesquisa em deep learning para visão computacional. Publicação de artigos em conferências internacionais.',
-      technologies: ['Python', 'Keras', 'OpenCV', 'Docker'],
-    },
-    {
-      year: '2017 - 2019',
-      title: 'Data Scientist',
-      company: 'Tech Solutions Ltda',
-      description: 'Desenvolvimento de modelos preditivos para análise de comportamento. Implementação de pipelines de dados ETL.',
-      technologies: ['R', 'SQL', 'Tableau', 'Scikit-learn'],
-    },
-  ];
+
 
   return (
     <Box
@@ -71,25 +49,22 @@ export default function Experience() {
           Professional Experience
         </Typography>
 
+
+        {/* Experiência Profissional */}
         <Timeline position="alternate">
-          {experiences.map((exp, index) => (
-            <TimelineItem key={index}>
-              <TimelineOppositeContent
-                sx={{ m: 'auto 0' }}
-                align="right"
-                variant="body2"
-                color="text.secondary"
-              >
+          {sortedExperiences.map((exp, index) => (
+            <TimelineItem key={`exp-${index}`}>
+              <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary">
                 {exp.year}
               </TimelineOppositeContent>
               <TimelineSeparator>
-                <TimelineDot>
+                <TimelineDot color="primary">
                   <WorkIcon />
                 </TimelineDot>
-                {index < experiences.length - 1 && <TimelineConnector />}
+                {index < sortedExperiences.length - 1 && <TimelineConnector />}
               </TimelineSeparator>
               <TimelineContent sx={{ py: '12px', px: 2 }}>
-                <Typography variant="h6" component="span" sx={{ fontWeight: 600 }}>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>
                   {exp.title}
                 </Typography>
                 <Typography variant="subtitle2" color="primary" sx={{ mb: 1 }}>
@@ -98,27 +73,59 @@ export default function Experience() {
                 <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
                   {exp.description}
                 </Typography>
-                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 1 }}>
-                  {exp.technologies.map((tech, i) => (
-                    <Box
-                      key={i}
-                      sx={{
-                        px: 1.5,
-                        py: 0.5,
-                        bgcolor: alpha('#000', 0.08),
-                        borderRadius: 2,
-                        fontSize: '0.75rem',
-                        color: 'text.primary',
-                      }}
-                    >
-                      {tech}
-                    </Box>
-                  ))}
-                </Box>
+                {exp.details && (
+                  <Box sx={{ mt: 1 }}>
+                    {exp.details.map((detail, i) => (
+                      <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
+                        <Box sx={{ width: 4, height: 4, borderRadius: '50%', bgcolor: 'primary.main' }} />
+                        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                          {detail}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
               </TimelineContent>
             </TimelineItem>
           ))}
         </Timeline>
+
+        {/* Disciplinas Ministradas */}
+        {/*<Typography
+          variant="h4"
+          component="h3"
+          sx={{
+            mt: 4,
+            mb: 3,
+            fontWeight: 600,
+            color: 'primary.main',
+          }}
+        >
+          Disciplinas Ministradas
+        </Typography>
+        <Timeline position="left">
+          {sortedTeaching.map((item, index) => (
+            <TimelineItem key={`teaching-${index}`}>
+              <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary">
+                {item.period}
+              </TimelineOppositeContent>
+              <TimelineSeparator>
+                <TimelineDot color="secondary">
+                  <SchoolIcon />
+                </TimelineDot>
+                {index < sortedTeaching.length - 1 && <TimelineConnector />}
+              </TimelineSeparator>
+              <TimelineContent sx={{ py: '12px', px: 2 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                  {item.course}
+                </Typography>
+                <Typography variant="caption" color="secondary" sx={{ display: 'block' }}>
+                  {item.level} - {item.institution}
+                </Typography>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline> */}
       </Container>
     </Box>
   );

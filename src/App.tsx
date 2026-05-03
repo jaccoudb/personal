@@ -8,6 +8,7 @@ import Research from './components/research/Research';
 import Publications from './components/publication/Publications';
 import AdvisedStudents from './components/students/AdvisedStudents';
 import Courses from './components/students/Courses';
+import ScrollToTop from './components/ScrollToTop';
 
 // Placeholders para páginas que serão criadas
 
@@ -25,6 +26,8 @@ export default function Page(props: { disableCustomTheme?: boolean }) {
         <Route path="/advised" element={<AdvisedStudents />} />
         <Route path="/courses" element={<Courses />} />
       </Routes>
+
+       <ScrollToTop />
     </AppTheme>
   );
 }

@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { dracula } from '../../shared-theme/themePrimitives';
 import Bio from './Bio';
-import Contact from './Contact';
+import Contact from '../../data/Contact';
 import Divider from '@mui/material/Divider';
 
 export default function Home() {

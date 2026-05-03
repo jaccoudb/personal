@@ -7,45 +7,17 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import SchoolIcon from '@mui/icons-material/School';
-import { TimelineOppositeContent } from '@mui/lab';
+import Chip from '@mui/material/Chip';
+import { educations } from '../../data/education';
 
 export default function Education() {
-  const educations = [
-    {
-      year: '2018 - 2022',
-      title: 'PhD in Computer Science',
-      institution: 'Universidade de São Paulo (USP)',
-      description: 'Tese em Inteligência Artificial e Machine Learning. Foco em deep learning para processamento de imagens médicas.',
-      achievements: [
-        'Publicação de 5 artigos em periódicos internacionais',
-        'Prêmio de melhor tese na área de IA',
-        'Bolsista CAPES/PROEX',
-      ],
-    },
-    {
-      year: '2016 - 2018',
-      title: 'MSc in Computer Science',
-      institution: 'Universidade Federal do Rio de Janeiro (UFRJ)',
-      description: 'Pesquisa em sistemas distribuídos e computação em nuvem.',
-      achievements: [
-        'Dissertação sobre otimização de recursos em nuvem',
-        'Participação em projetos de pesquisa com indústria',
-        'Monitoria em disciplinas de algoritmos',
-      ],
-    },
-    {
-      year: '2012 - 2016',
-      title: 'BSc in Computer Science',
-      institution: 'Universidade Federal Fluminense (UFF)',
-      description: 'Formação sólida em ciência da computação com ênfase em desenvolvimento de software.',
-      achievements: [
-        'Iniciação científica em visão computacional',
-        'Representante estudantil por 2 anos',
-        'Média geral: 8.5/10',
-      ],
-    },
-  ];
+  // Ordenar por ano (mais recente primeiro)
+  const sortedEducations = [...educations].sort((a, b) => {
+    const getStartYear = (period: string) => parseInt(period.split(' - ')[0]);
+    return getStartYear(b.year) - getStartYear(a.year);
+  });
 
   return (
     <Box
@@ -83,11 +55,11 @@ export default function Education() {
         </Typography>
 
         <Timeline position="alternate">
-          {educations.map((edu, index) => (
+          {sortedEducations.map((edu, index) => (
             <TimelineItem key={index}>
               <TimelineOppositeContent
                 sx={{ m: 'auto 0' }}
-                align="right"
+                align="left"
                 variant="body2"
                 color="text.secondary"
               >
@@ -97,43 +69,71 @@ export default function Education() {
                 <TimelineDot color="secondary">
                   <SchoolIcon />
                 </TimelineDot>
-                {index < educations.length - 1 && <TimelineConnector />}
+                {index < sortedEducations.length - 1 && <TimelineConnector />}
               </TimelineSeparator>
               <TimelineContent sx={{ py: '12px', px: 2 }}>
+                {/* Título */}
                 <Typography variant="h6" component="span" sx={{ fontWeight: 600 }}>
                   {edu.title}
                 </Typography>
+
+                {/* Instituição */}
                 <Typography variant="subtitle2" color="secondary" sx={{ mb: 1 }}>
                   {edu.institution}
                 </Typography>
+
+                {/* Descrição (Tese/Dissertação/Título) */}
                 <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
                   {edu.description}
                 </Typography>
-                <Box sx={{ mt: 1 }}>
-                  {edu.achievements.map((achievement, i) => (
-                    <Box
-                      key={i}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 1,
-                        mb: 0.5,
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: 6,
-                          height: 6,
-                          borderRadius: '50%',
-                          bgcolor: 'primary.main',
-                        }}
-                      />
-                      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                        {achievement}
+
+                {/* Orientador/Coordenador - tópico único com lista */}
+                {edu.advisors && edu.advisors.length > 0 && (
+                  <Box sx={{ mt: 1, mb: 1, textAlign: 'left' }}>
+                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', display: 'block', mb: 0.5 }}>
+                      Orientador(es):
+                    </Typography>
+                    {edu.advisors.map((advisor, i) => (
+                      <Typography key={i} variant="caption" sx={{ color: 'text.secondary', display: 'block', ml: 1 }}>
+                        • {advisor}
                       </Typography>
+                    ))}
+                  </Box>
+                )}
+
+                {/* Conquistas - alinhado à esquerda */}
+                {edu.achievements && edu.achievements.length > 0 && (
+                  <Box sx={{ mt: 1, mb: 1, textAlign: 'left' }}>
+                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', display: 'block', mb: 0.5 }}>
+                      Realização(ões):
+                    </Typography>
+                    {edu.achievements.map((achievement, i) => (
+                      <Typography key={i} variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 0.5 }}>
+                        • {achievement}
+                      </Typography>
+                    ))}
+                  </Box>
+                )}
+
+                {/* Palavras-chave */}
+                {edu.keys && edu.keys.length > 0 && (
+                  <Box sx={{ mt: 1, textAlign: 'left' }}>
+                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', display: 'block', mb: 0.5 }}>
+                      <strong>Palavras-chave:</strong>
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                      {edu.keys.map((key, i) => (
+                        <Chip
+                          key={i}
+                          label={key}
+                          size="small"
+                          variant="outlined"
+                          sx={{ fontSize: '0.65rem' }}
+                        />
+                      ))}
                     </Box>
-                  ))}
-                </Box>
+                  </Box>
+                )}
               </TimelineContent>
             </TimelineItem>
           ))}

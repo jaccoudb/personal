@@ -2,93 +2,19 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { alpha } from '@mui/material/styles';
-import DownloadIcon from '@mui/icons-material/Download';
 import SchoolIcon from '@mui/icons-material/School';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
-import { FaGoogleScholar as GoogleScholarIcon} from "react-icons/fa6";
-import { FaResearchgate as ResearchGateIcon } from "react-icons/fa";
-import { FaOrcid as OrcidIcon} from "react-icons/fa";
-import { SiScopus } from "react-icons/si";
-import { ReactComponent as LattesIcon } from '../../assets/lattes.svg';
 import perfil from '../../assets/perfil_lucena.png';
+import { interests } from '../../data/interests';
+import { socialLinks } from '../../data/SocialLinks';
 
 export default function Bio() {
-
-
-  const interests = [
-    'Machine Learning',
-    'Artificial Intelligence',
-    'Computer Vision',
-    'Natural Language Processing',
-    'Deep Learning',
-    'Data Science',
-    'Distributed Systems',
-    'Big Data',
-    'Reinforcement Learning'
-  ];
-
-  // Redes sociais
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <GitHubIcon/>,
-      url: 'https://github.com/rachel_lucena',
-      color: '#333',
-    },
-    {
-      name: 'LinkedIn',
-      icon: <LinkedInIcon />,
-      url: 'https://www.linkedin.com/in/rachellucena',
-      color: '#0077b5',
-    },
-    {
-      name: 'Email',
-      icon: <EmailIcon />,
-      url: 'mailto:rachel.lucena@eng.uerj.br',
-      color: '#ea4335',
-    },
-        {
-      name: 'Lattes',
-      icon: <LattesIcon/>,
-      url: 'http://lattes.cnpq.br/9348327979369533',
-      color: '#030b4d',
-    },
-    {
-      name: 'Google Scholar',
-      icon: <GoogleScholarIcon />,
-      url: 'https://scholar.google.com/citations?hl=pt-BR&user=ih4O_f4AAAAJ',
-      color: '#4285f4',
-    },
-    {
-      name: 'ResearchGate',
-      icon: <ResearchGateIcon />,
-      url: 'https://www.researchgate.net/profile/Rachel-Lucena',
-      color: '#00CCBB',
-    },
-    {
-      name: 'Orcid',
-      icon: <OrcidIcon />,
-      url: 'https://orcid.org/0000-0003-2089-7313',
-      color: '#A6CE39',
-    },
-    {
-      name: 'Scopus',
-      icon: <SiScopus />,
-      url: 'https://www.scopus.com/authid/detail.uri?authorId=57204213376',
-      color: '#E9711C',
-    },
-  ];
-
   return (
     <Box
       id="hero"
@@ -118,9 +44,9 @@ export default function Bio() {
               Dra. Rachel Lucena
             </Typography>
 
-            <Typography variant="caption" sx={{ fontWeight: 600 }}>
+            {/* <Typography variant="caption" sx={{ fontWeight: 600 }}>
               (she/her)
-            </Typography>
+            </Typography> */}
 
             <Typography variant="h4" sx={(theme) => ({
               color: 'secondary.main',
@@ -132,14 +58,14 @@ export default function Bio() {
             </Typography>
 
 
-            <Typography variant="h6" sx={(theme) => ({
+            {/* <Typography variant="subtitle1" sx={(theme) => ({
               color: 'secondary.main',
               ...theme.applyStyles('dark', {
                 color: 'secondary.light',
               }),
             })}>
-            Coordenadora da área de Termociências, PPG-EM
-            </Typography>
+              Coordenadora da área de Termociências, PPG-EM
+            </Typography> */}
 
             <Typography sx={{ color: alpha('#fff', 0.5), fontSize: 14 }}>
               UERJ - Universidade do Estado do Rio de Janeiro
@@ -183,8 +109,8 @@ export default function Bio() {
               </Typography>
 
               <Typography sx={{ color: alpha('#fff', 0.7), lineHeight: 1.6 }}>
-                Pesquisadora com experiência nas áreas de Engenharia Mecânica e Matemática, 
-                com ênfase em princípios variacionais e métodos numéricos, desenvolvendo pesquisas principalmente nos seguintes temas: 
+                Pesquisadora com experiência nas áreas de Engenharia Mecânica e Matemática,
+                com ênfase em princípios variacionais e métodos numéricos, desenvolvendo pesquisas principalmente nos seguintes temas:
                 simulação numérica, método dos elementos finitos, escoamento em meios porosos e escoamentos compressíveis.
               </Typography>
 
@@ -211,9 +137,10 @@ export default function Bio() {
 
               <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
                 {[
-                  { title: 'PhD in Computer Science', period: '2018 - 2022', place: 'USP' },
-                  { title: 'MSc in Computer Science', period: '2016 - 2018', place: 'UFRJ' },
-                  { title: 'BSc in Computer Science', period: '2012 - 2016', place: 'UFF' },
+                  { title: 'Dsc in Mechanical Engineering', period: '2013 - 2016', place: 'UERJ' },
+                  { title: 'MSc in Metallurgical and Materials Engineering', period: '2011 - 2013', place: 'COPPE/UFRJ' },
+                  { title: 'BSc in Production Engineering', period: '2015 - 2021', place: 'CEFET/RJ' },
+                  { title: 'BSc in Mathematics', period: '2006 - 2010', place: 'UFRRJ' },
                 ].map((item, i) => (
                   <Box
                     key={i}

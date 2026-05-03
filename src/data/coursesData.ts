@@ -53,12 +53,13 @@ export const courses: Course[] = [
     code: "FEN03-02040",
     name: "Fenômenos de Transporte",
     level: ["Graduação"],
-    period: "2024.1",
+    period: "2026.1",
     schedule: [
-      "Terças-feiras, 08:00 - 10:00 (Teoria)",
-      "Quintas-feiras, 08:00 - 10:00 (Prática)",
+      "Turma 4 - Quartas e Sextas-feiras (M3-M4)",
+      "Turma 5 - Quartas e Sextas-feiras (M5-M6)",
+      "Turma 6 - Terças-feiras (T5-T6) e Quartas-feiras (T3-T4)",
     ],
-    classCode: "FEN03-02040 - Turma A",
+    classCode: "FEN03-02040",
     syllabus: [
       "Conceitos básicos",
       "Estática dos fluidos",

@@ -15,56 +15,7 @@ export default function Resume() {
 
       }}
     >
-      <Container
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          pb: 4,
-          gap: { xs: 3, sm: 6 },
-        }}
-      >
-        <Box
-          sx={{
-            width: { sm: '100%', md: '60%' },
-            textAlign: { sm: 'left', md: 'center' },
-          }}
-        >
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{
-              textAlign: 'center',
-              mb: 2,
-              fontWeight: 600,
-              position: 'relative',
-              '&:after': {
-                content: '""',
-                position: 'absolute',
-                bottom: -16,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 80,
-                height: 4,
-                bgcolor: 'primary.main',
-                borderRadius: 2,
-              },
-            }}
-          >
-            My Research
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'grey.400' }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
-          </Typography>
-        </Box>
-      </Container>
-
-      <Divider />
-
-
+     
       {/* Seções */}
       <section id="home">
         <Experience />

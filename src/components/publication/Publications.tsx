@@ -9,13 +9,12 @@ import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Tooltip from '@mui/material/Tooltip';
+import { SiDoi } from "react-icons/si";
 import { publications, getTypeColor, filterOptions } from '../../data/publicationsData';
 
 export default function Publications() {
   const [filterType, setFilterType] = useState<string | null>('all');
-
-  // Opções de filtro
-
 
   const handleFilterChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -187,9 +186,29 @@ export default function Publications() {
                         {pub.pages && `, ${pub.pages}`}
                       </Typography>
                       
-                      <Typography variant="caption" color="text.secondary">
-                        {pub.year}
-                      </Typography>
+                      {/* Ano com DOI ao lado - apenas ícone, sem botão */}
+                      <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography variant="caption" color="text.secondary">
+                          {pub.year}
+                        </Typography>
+                        {pub.doi && (
+                          <Tooltip title="Ver DOI" arrow>
+                            <a
+                              href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                color: '#0366d6',
+                                textDecoration: 'none',
+                              }}
+                            >
+                              <SiDoi size={14} />
+                            </a>
+                          </Tooltip>
+                        )}
+                      </Stack>
                     </Stack>
                   </CardContent>
                 </Card>

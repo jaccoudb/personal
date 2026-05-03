@@ -7,6 +7,7 @@ export interface Publication {
   volume?: string;
   pages?: string;
   year: number;
+  doi?: string;
   type: "journal" | "conference" | "extended-abstract" | "abstract";
 }
 
@@ -52,6 +53,7 @@ export const publications: Publication[] = [
     pages: "p. wxag005",
     year: 2026,
     type: "journal",
+    doi: "10.1093/annweh/wxag005"
   },
   // 2025
   {
@@ -76,9 +78,9 @@ export const publications: Publication[] = [
     title: "Effect of an interface undulation on convective dissolution of CO2",
     authors: [
       "LUCENA, R.M.",
-      "Pontes, J.",
+      "PONTES, J.",
       "BRAU, F.",
-      "De Wit, A.",
+      "DE WIT, A.",
       "MANGIAVACCHI, N.",
     ],
     journal: "ADVANCES IN WATER RESOURCES",
