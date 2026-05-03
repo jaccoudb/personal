@@ -30,17 +30,26 @@ const defaultTheme = createTheme();
 
 const customShadows: Shadows = [...defaultTheme.shadows];
 
-export const brand = {
-  50: 'hsl(210, 100%, 95%)',
-  100: 'hsl(210, 100%, 92%)',
-  200: 'hsl(210, 100%, 80%)',
-  300: 'hsl(210, 100%, 65%)',
-  400: 'hsl(210, 98%, 48%)',
-  500: 'hsl(210, 98%, 42%)',
-  600: 'hsl(210, 98%, 55%)',
-  700: 'hsl(210, 100%, 35%)',
-  800: 'hsl(210, 100%, 16%)',
-  900: 'hsl(210, 100%, 21%)',
+// Cores do Dracula
+export const dracula = {
+  // Cores principais
+  background: '#282a36',      // Fundo principal
+  currentLine: '#44475a',     // Linha atual/seleção
+  foreground: '#f8f8f2',      // Texto principal
+  comment: '#6272a4',         // Comentários
+  cyan: '#8be9fd',            // Ciano
+  green: '#50fa7b',           // Verde
+  orange: '#ffb86c',          // Laranja
+  pink: '#ff79c6',            // Rosa (primary)
+  purple: '#bd93f9',          // Roxo (secondary)
+  red: '#ff5555',             // Vermelho (error)
+  yellow: '#f1fa8c',         // Amarelo (warning)
+  
+  // Variações para gradientes e hover
+  backgroundLight: '#343746',
+  backgroundDark: '#1e1f29',
+  foregroundLight: '#ffffff',
+  foregroundDark: '#e0e0e0',
 };
 
 export const gray = {
@@ -56,134 +65,171 @@ export const gray = {
   900: 'hsl(220, 35%, 3%)',
 };
 
+export const brand = {
+  50: dracula.purple + '1a', // 10% opacity
+  100: dracula.purple + '33', // 20% opacity
+  200: dracula.purple + '4d', // 30% opacity
+  300: dracula.purple + '80', // 50% opacity
+  400: dracula.purple,
+  500: '#c9a3ff',
+  600: '#a97ce6',
+  700: '#8c5bcc',
+  800: '#6e3fb3',
+  900: '#502699',
+};
+
 export const green = {
-  50: 'hsl(120, 80%, 98%)',
-  100: 'hsl(120, 75%, 94%)',
-  200: 'hsl(120, 75%, 87%)',
-  300: 'hsl(120, 61%, 77%)',
-  400: 'hsl(120, 44%, 53%)',
-  500: 'hsl(120, 59%, 30%)',
-  600: 'hsl(120, 70%, 25%)',
-  700: 'hsl(120, 75%, 16%)',
-  800: 'hsl(120, 84%, 10%)',
-  900: 'hsl(120, 87%, 6%)',
+  50: dracula.green + '1a',
+  100: dracula.green + '33',
+  200: dracula.green + '4d',
+  300: dracula.green + '80',
+  400: dracula.green,
+  500: '#3dd68c',
+  600: '#2ab873',
+  700: '#1c9a5c',
+  800: '#107c47',
+  900: '#065e34',
 };
 
 export const orange = {
-  50: 'hsl(45, 100%, 97%)',
-  100: 'hsl(45, 92%, 90%)',
-  200: 'hsl(45, 94%, 80%)',
-  300: 'hsl(45, 90%, 65%)',
-  400: 'hsl(45, 90%, 40%)',
-  500: 'hsl(45, 90%, 35%)',
-  600: 'hsl(45, 91%, 25%)',
-  700: 'hsl(45, 94%, 20%)',
-  800: 'hsl(45, 95%, 16%)',
-  900: 'hsl(45, 93%, 12%)',
+  50: dracula.orange + '1a',
+  100: dracula.orange + '33',
+  200: dracula.orange + '4d',
+  300: dracula.orange + '80',
+  400: dracula.orange,
+  500: '#ff9e47',
+  600: '#e6852e',
+  700: '#cc6d1a',
+  800: '#b3560c',
+  900: '#994000',
 };
 
 export const red = {
-  50: 'hsl(0, 100%, 97%)',
-  100: 'hsl(0, 92%, 90%)',
-  200: 'hsl(0, 94%, 80%)',
-  300: 'hsl(0, 90%, 65%)',
-  400: 'hsl(0, 90%, 40%)',
-  500: 'hsl(0, 90%, 30%)',
-  600: 'hsl(0, 91%, 25%)',
-  700: 'hsl(0, 94%, 18%)',
-  800: 'hsl(0, 95%, 12%)',
-  900: 'hsl(0, 93%, 6%)',
+  50: dracula.red + '1a',
+  100: dracula.red + '33',
+  200: dracula.red + '4d',
+  300: dracula.red + '80',
+  400: dracula.red,
+  500: '#ff6e6e',
+  600: '#e65555',
+  700: '#cc4040',
+  800: '#b32e2e',
+  900: '#991f1f',
 };
 
 export const getDesignTokens = (mode: PaletteMode) => {
   customShadows[1] =
     mode === 'dark'
-      ? 'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px'
+      ? 'rgba(0, 0, 0, 0.5) 0px 4px 16px 0px, rgba(0, 0, 0, 0.3) 0px 8px 16px -5px'
       : 'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px';
 
   return {
     palette: {
       mode,
       primary: {
-        light: brand[200],
-        main: brand[400],
-        dark: brand[700],
-        contrastText: brand[50],
+        light: dracula.pink,
+        main: dracula.pink,
+        dark: '#e05ab3',
+        contrastText: dracula.background,
         ...(mode === 'dark' && {
-          contrastText: brand[50],
-          light: brand[300],
-          main: brand[400],
-          dark: brand[700],
+          light: dracula.pink,
+          main: dracula.pink,
+          dark: '#e05ab3',
+          contrastText: dracula.background,
+        }),
+      },
+      secondary: {
+        light: dracula.purple,
+        main: dracula.purple,
+        dark: '#9a6ee0',
+        contrastText: dracula.background,
+        ...(mode === 'dark' && {
+          light: dracula.purple,
+          main: dracula.purple,
+          dark: '#9a6ee0',
+          contrastText: dracula.background,
         }),
       },
       info: {
-        light: brand[100],
-        main: brand[300],
-        dark: brand[600],
-        contrastText: gray[50],
+        light: dracula.cyan,
+        main: dracula.cyan,
+        dark: '#6bcbe6',
+        contrastText: dracula.background,
         ...(mode === 'dark' && {
-          contrastText: brand[300],
-          light: brand[500],
-          main: brand[700],
-          dark: brand[900],
+          light: dracula.cyan,
+          main: dracula.cyan,
+          dark: '#6bcbe6',
+          contrastText: dracula.background,
         }),
       },
       warning: {
-        light: orange[300],
-        main: orange[400],
-        dark: orange[800],
+        light: dracula.yellow,
+        main: dracula.yellow,
+        dark: '#d4cc77',
         ...(mode === 'dark' && {
-          light: orange[400],
-          main: orange[500],
-          dark: orange[700],
+          light: dracula.yellow,
+          main: dracula.yellow,
+          dark: '#d4cc77',
         }),
       },
       error: {
-        light: red[300],
-        main: red[400],
-        dark: red[800],
+        light: dracula.red,
+        main: dracula.red,
+        dark: '#e04040',
         ...(mode === 'dark' && {
-          light: red[400],
-          main: red[500],
-          dark: red[700],
+          light: dracula.red,
+          main: dracula.red,
+          dark: '#e04040',
         }),
       },
       success: {
-        light: green[300],
-        main: green[400],
-        dark: green[800],
+        light: dracula.green,
+        main: dracula.green,
+        dark: '#3bc97a',
         ...(mode === 'dark' && {
-          light: green[400],
-          main: green[500],
-          dark: green[700],
+          light: dracula.green,
+          main: dracula.green,
+          dark: '#3bc97a',
         }),
       },
       grey: {
         ...gray,
       },
-      divider: mode === 'dark' ? alpha(gray[700], 0.6) : alpha(gray[300], 0.4),
+      divider: mode === 'dark' ? alpha(dracula.comment, 0.3) : alpha(gray[300], 0.4),
       background: {
-        default: 'hsl(0, 0%, 99%)',
-        paper: 'hsl(220, 35%, 97%)',
-        ...(mode === 'dark' && { default: gray[900], paper: 'hsl(220, 30%, 7%)' }),
+        default: dracula.background,
+        paper: dracula.currentLine,
+        ...(mode === 'dark' && { 
+          default: dracula.background, 
+          paper: dracula.currentLine 
+        }),
       },
       text: {
-        primary: gray[800],
-        secondary: gray[600],
-        warning: orange[400],
-        ...(mode === 'dark' && { primary: 'hsl(0, 0%, 100%)', secondary: gray[400] }),
+        primary: dracula.foreground,
+        secondary: dracula.comment,
+        warning: dracula.yellow,
+        ...(mode === 'dark' && { 
+          primary: dracula.foreground, 
+          secondary: dracula.comment 
+        }),
       },
       action: {
-        hover: alpha(gray[200], 0.2),
-        selected: `${alpha(gray[200], 0.3)}`,
+        hover: alpha(dracula.comment, 0.1),
+        selected: alpha(dracula.purple, 0.2),
+        disabled: alpha(dracula.comment, 0.3),
+        disabledBackground: alpha(dracula.comment, 0.1),
+        focus: alpha(dracula.purple, 0.3),
         ...(mode === 'dark' && {
-          hover: alpha(gray[600], 0.2),
-          selected: alpha(gray[600], 0.3),
+          hover: alpha(dracula.comment, 0.15),
+          selected: alpha(dracula.purple, 0.25),
+          disabled: alpha(dracula.comment, 0.3),
+          disabledBackground: alpha(dracula.comment, 0.1),
+          focus: alpha(dracula.purple, 0.35),
         }),
       },
     },
     typography: {
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Prompt, "Fira Code", monospace, sans-serif',
       h1: {
         fontSize: defaultTheme.typography.pxToRem(48),
         fontWeight: 600,
@@ -229,6 +275,10 @@ export const getDesignTokens = (mode: PaletteMode) => {
       caption: {
         fontSize: defaultTheme.typography.pxToRem(12),
         fontWeight: 400,
+      },
+      button: {
+        textTransform: 'none',
+        fontWeight: 500,
       },
     },
     shape: {
@@ -292,56 +342,66 @@ export const colorSchemes = {
   dark: {
     palette: {
       primary: {
-        contrastText: brand[50],
-        light: brand[300],
-        main: brand[400],
-        dark: brand[700],
+        light: dracula.pink,
+        main: dracula.pink,
+        dark: '#e05ab3',
+        contrastText: dracula.background,
+      },
+      secondary: {
+        light: dracula.purple,
+        main: dracula.purple,
+        dark: '#9a6ee0',
+        contrastText: dracula.background,
       },
       info: {
-        contrastText: brand[300],
-        light: brand[500],
-        main: brand[700],
-        dark: brand[900],
+        light: dracula.cyan,
+        main: dracula.cyan,
+        dark: '#6bcbe6',
+        contrastText: dracula.background,
       },
       warning: {
-        light: orange[400],
-        main: orange[500],
-        dark: orange[700],
+        light: dracula.yellow,
+        main: dracula.yellow,
+        dark: '#d4cc77',
       },
       error: {
-        light: red[400],
-        main: red[500],
-        dark: red[700],
+        light: dracula.red,
+        main: dracula.red,
+        dark: '#e04040',
       },
       success: {
-        light: green[400],
-        main: green[500],
-        dark: green[700],
+        light: dracula.green,
+        main: dracula.green,
+        dark: '#3bc97a',
       },
       grey: {
         ...gray,
       },
-      divider: alpha(gray[700], 0.6),
+      divider: alpha(dracula.comment, 0.3),
       background: {
-        default: gray[900],
-        paper: 'hsl(220, 30%, 7%)',
+        default: dracula.background,
+        paper: dracula.currentLine,
       },
       text: {
-        primary: 'hsl(0, 0%, 100%)',
-        secondary: gray[400],
+        primary: dracula.foreground,
+        secondary: dracula.comment,
+        warning: dracula.yellow,
       },
       action: {
-        hover: alpha(gray[600], 0.2),
-        selected: alpha(gray[600], 0.3),
+        hover: alpha(dracula.comment, 0.15),
+        selected: alpha(dracula.purple, 0.25),
+        disabled: alpha(dracula.comment, 0.3),
+        disabledBackground: alpha(dracula.comment, 0.1),
+        focus: alpha(dracula.purple, 0.35),
       },
       baseShadow:
-        'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
+        'rgba(0, 0, 0, 0.5) 0px 4px 16px 0px, rgba(0, 0, 0, 0.3) 0px 8px 16px -5px',
     },
   },
 };
 
 export const typography = {
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: 'Prompt, "Fira Code", monospace, sans-serif',
   h1: {
     fontSize: defaultTheme.typography.pxToRem(48),
     fontWeight: 600,
@@ -387,6 +447,10 @@ export const typography = {
   caption: {
     fontSize: defaultTheme.typography.pxToRem(12),
     fontWeight: 400,
+  },
+  button: {
+    textTransform: 'none',
+    fontWeight: 500,
   },
 };
 

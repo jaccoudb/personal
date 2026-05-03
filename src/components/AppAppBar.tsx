@@ -1,144 +1,190 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
+import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropdown';
-import Sitemark from './SitemarkIcon';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: '1fr auto 1fr',
   alignItems: 'center',
-  justifyContent: 'space-between',
-  flexShrink: 0,
-  borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
-  backdropFilter: 'blur(24px)',
-  border: '1px solid',
-  borderColor: (theme.vars || theme).palette.divider,
-  backgroundColor: theme.vars
-    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
-    : alpha(theme.palette.background.default, 0.4),
-  boxShadow: (theme.vars || theme).shadows[1],
-  padding: '8px 12px',
+  width: '100%',
+  minHeight: 64,
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  backgroundColor: theme.palette.background.paper,
+  padding: '0 24px',
 }));
 
 export default function AppAppBar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
+  // Função para scroll suave até a seção
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setOpen(false);
+  };
+
+  // Função principal de navegação
+  const handleNavigation = (path: string, sectionId?: string) => {
+    if (location.pathname !== path) {
+      // Navega para a página
+      navigate(path);
+      // Se tem seção, espera a página carregar e faz scroll
+      if (sectionId) {
+        setTimeout(() => {
+          scrollToSection(sectionId);
+        }, 100);
+      }
+    } else if (sectionId) {
+      // Se já está na página, faz scroll direto
+      scrollToSection(sectionId);
+    }
+    setOpen(false);
+  };
+
+  // Verifica se o link está ativo
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  // Configuração dos itens do menu
+  const menuItems = [
+    { label: 'Home', path: '/', sectionId: 'home', disabled: false },
+    { label: 'Resume', path: '/resume', sectionId: 'resume', disabled: false },
+    { label: 'Research', path: '/research', disabled: false },
+    { label: 'Publications', path: '/publications', disabled: false },
+    { label: 'Advised Students ', path: '/advised', disabled: false },
+    { label: 'Courses', path: '/courses', disabled: false },
+    { label: 'Contact', path: '/', sectionId: 'contact', disabled: false },
+  ];
+
+  // Itens ativos (não desabilitados)
+  const activeMenuItems = menuItems.filter(item => !item.disabled);
+
   return (
     <AppBar
       position="fixed"
-      enableColorOnDark
       sx={{
-        boxShadow: 0,
-        bgcolor: 'transparent',
-        backgroundImage: 'none',
-        mt: 'calc(var(--template-frame-height, 0px) + 28px)',
+        top: 0,
+        boxShadow: 'none',
+        backgroundColor: 'transparent',
       }}
     >
-      <Container maxWidth="lg">
-        <StyledToolbar variant="dense" disableGutters>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            <Sitemark />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
-                Features
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Testimonials
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Highlights
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Pricing
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                FAQ
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Blog
-              </Button>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              gap: 1,
-              alignItems: 'center',
-            }}
+      <StyledToolbar>
+        {/* Logo */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Button 
+            color="inherit" 
+            sx={{ textTransform: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}
+            onClick={() => handleNavigation('/')}
           >
-            <Button color="primary" variant="text" size="small">
-              Sign in
-            </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
-            </Button>
-            <ColorModeIconDropdown />
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-            <ColorModeIconDropdown size="medium" />
-            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              anchor="top"
-              open={open}
-              onClose={toggleDrawer(false)}
-              slotProps={{
-                paper: {
-                  sx: {
-                    top: 'var(--template-frame-height, 0px)',
-                  },
+            {/* Meu Site */}
+          </Button>
+        </Box>
+
+        {/* Menu Desktop */}
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+            gap: 2,
+            justifyContent: 'center',
+          }}
+        >
+          {activeMenuItems.map((item) => (
+            <Button 
+              key={item.label}
+              color="inherit" 
+              sx={{ 
+                textTransform: 'none',
+                fontWeight: isActive(item.path) && !item.sectionId ? 'bold' : 'normal',
+                borderBottom: isActive(item.path) && !item.sectionId ? '2px solid' : 'none',
+                borderRadius: 0,
+                '&:hover': {
+                  borderBottom: '2px solid',
                 },
+                opacity: item.disabled ? 0.5 : 1,
+              }}
+              onClick={() => handleNavigation(item.path, item.sectionId)}
+              disabled={item.disabled}
+            >
+              {item.label}
+            </Button>
+          ))}
+        </Box>
+
+        {/* Direita */}
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            gap: 1,
+          }}
+        >
+          <ColorModeIconDropdown />
+          <IconButton onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <MenuIcon />
+          </IconButton>
+        </Box>
+      </StyledToolbar>
+
+      {/* Drawer Mobile */}
+      <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
+        <Box sx={{ p: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <IconButton onClick={toggleDrawer(false)}>
+              <CloseRoundedIcon />
+            </IconButton>
+          </Box>
+
+          <Typography variant="subtitle2" sx={{ px: 2, pt: 2, fontWeight: 'bold', color: 'text.secondary' }}>
+            Menu
+          </Typography>
+          
+          {activeMenuItems.map((item) => (
+            <MenuItem 
+              key={item.label}
+              onClick={() => handleNavigation(item.path, item.sectionId)}
+              disabled={item.disabled}
+              sx={{
+                fontWeight: isActive(item.path) && !item.sectionId ? 'bold' : 'normal',
+                opacity: item.disabled ? 0.5 : 1,
               }}
             >
-              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                  }}
-                >
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <CloseRoundedIcon />
-                  </IconButton>
-                </Box>
+              {item.label}
+              {item.disabled && " (Em breve)"}
+            </MenuItem>
+          ))}
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
-                  </Button>
-                </MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
-                </MenuItem>
-              </Box>
-            </Drawer>
-          </Box>
-        </StyledToolbar>
-      </Container>
+          <Divider sx={{ my: 2 }} />
+        </Box>
+      </Drawer>
     </AppBar>
   );
 }

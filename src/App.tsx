@@ -1,38 +1,26 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import ProTip from './ProTip';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Routes, Route } from 'react-router-dom'; // Remove BrowserRouter da importação
+import AppTheme from './shared-theme/AppTheme';
+import AppAppBar from './components/AppAppBar';
+import Home from './components/home/Home';
+import Resume from './components/resume/Resume';
 
-function Copyright() {
-  return (
-    <Typography
-      variant="body2"
-      align="center"
-      sx={{
-        color: 'text.secondary',
-      }}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
+// Placeholders para páginas que serão criadas
+const Papers = () => <div style={{ paddingTop: '80px' }}>Papers Page (Em breve)</div>;
+const Courses = () => <div style={{ paddingTop: '80px' }}>Courses Page (Em breve)</div>;
 
-export default function App() {
+export default function Page(props: { disableCustomTheme?: boolean }) {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-          Material UI Vite example in TypeScript
-        </Typography>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+    <AppTheme {...props}>
+      <CssBaseline enableColorScheme />
+      <AppAppBar />
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/papers" element={<Papers />} />
+        <Route path="/courses" element={<Courses />} />
+      </Routes>
+    </AppTheme>
   );
 }
