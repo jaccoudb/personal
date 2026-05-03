@@ -4,10 +4,12 @@ import AppTheme from './shared-theme/AppTheme';
 import AppAppBar from './components/AppAppBar';
 import Home from './components/home/Home';
 import Resume from './components/resume/Resume';
+import Research from './components/research/Research';
+import Publications from './components/publication/Publications';
+import AdvisedStudents from './components/students/AdvisedStudents';
+import Courses from './components/students/Courses';
 
 // Placeholders para páginas que serão criadas
-const Papers = () => <div style={{ paddingTop: '80px' }}>Papers Page (Em breve)</div>;
-const Courses = () => <div style={{ paddingTop: '80px' }}>Courses Page (Em breve)</div>;
 
 export default function Page(props: { disableCustomTheme?: boolean }) {
   return (
@@ -18,7 +20,9 @@ export default function Page(props: { disableCustomTheme?: boolean }) {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
-        <Route path="/papers" element={<Papers />} />
+        <Route path="/research" element={<Research />} />
+        <Route path="/publications" element={<Publications />} />
+        <Route path="/advised" element={<AdvisedStudents />} />
         <Route path="/courses" element={<Courses />} />
       </Routes>
     </AppTheme>

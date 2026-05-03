@@ -147,6 +147,7 @@ export default function AppAppBar() {
             gap: 1,
           }}
         >
+          {/* Escolha de tema */}
           <ColorModeIconDropdown />
           <IconButton onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', md: 'none' } }}>
             <MenuIcon />

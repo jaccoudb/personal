@@ -41,10 +41,6 @@ export default function Home() {
       <section id="home">
         <Bio />
       </section>
-      
-      {/* <section id="resume">
-        <Resume />
-      </section> */}
 
       <Divider/>
       

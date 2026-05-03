@@ -188,7 +188,8 @@ export default function Bio() {
                 simulação numérica, método dos elementos finitos, escoamento em meios porosos e escoamentos compressíveis.
               </Typography>
 
-              <Button
+              {/* Download CV */}
+              {/* <Button
                 sx={{
                   mt: 2,
                   background: 'linear-gradient(45deg, #fada61, #ff9188, #ff5acd)',
@@ -198,7 +199,7 @@ export default function Bio() {
                 startIcon={<DownloadIcon />}
               >
                 Download CV
-              </Button>
+              </Button> */}
             </Stack>
 
             {/* 🎓 EDUCAÇÃO */}

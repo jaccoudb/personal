@@ -21,6 +21,7 @@ export default function Resume() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          pb: 4,
           gap: { xs: 3, sm: 6 },
         }}
       >
@@ -30,7 +31,27 @@ export default function Resume() {
             textAlign: { sm: 'left', md: 'center' },
           }}
         >
-          <Typography component="h2" variant="h4" gutterBottom>
+          <Typography
+            variant="h2"
+            component="h1"
+            sx={{
+              textAlign: 'center',
+              mb: 2,
+              fontWeight: 600,
+              position: 'relative',
+              '&:after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -16,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 80,
+                height: 4,
+                bgcolor: 'primary.main',
+                borderRadius: 2,
+              },
+            }}
+          >
             My Research
           </Typography>
           <Typography variant="body1" sx={{ color: 'grey.400' }}>
