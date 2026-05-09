@@ -9,6 +9,7 @@ import publicationsPtBr from './locales/pt-BR/publications.json';
 import resumePtBr from './locales/pt-BR/resume.json';
 import studentsPtBr from './locales/pt-BR/students.json';
 import coursesPtBr from './locales/pt-BR/courses.json';
+import courseMaterialsPtBr from './locales/pt-BR/course-materials.json';
 
 import commonEn from './locales/en/common.json';
 import homeEn from './locales/en/home.json';
@@ -17,6 +18,7 @@ import publicationsEn from './locales/en/publications.json';
 import resumeEn from './locales/en/resume.json';
 import studentsEn from './locales/en/students.json';
 import coursesEn from './locales/en/courses.json';
+import courseMaterialsEn from './locales/en/course-materials.json';
 
 import commonFr from './locales/fr/common.json';
 import homeFr from './locales/fr/home.json';
@@ -25,6 +27,7 @@ import publicationsFr from './locales/fr/publications.json';
 import resumeFr from './locales/fr/resume.json';
 import studentsFr from './locales/fr/students.json';
 import coursesFr from './locales/fr/courses.json';
+import courseMaterialsFr from './locales/fr/course-materials.json';
 
 export const supportedLngs = ['pt-BR', 'en', 'fr'] as const;
 export type SupportedLanguage = (typeof supportedLngs)[number];
@@ -44,6 +47,7 @@ void i18n
         resume: resumePtBr,
         students: studentsPtBr,
         courses: coursesPtBr,
+        'course-materials': courseMaterialsPtBr,
       },
       en: {
         common: commonEn,
@@ -53,6 +57,7 @@ void i18n
         resume: resumeEn,
         students: studentsEn,
         courses: coursesEn,
+        'course-materials': courseMaterialsEn,
       },
       fr: {
         common: commonFr,
@@ -62,12 +67,13 @@ void i18n
         resume: resumeFr,
         students: studentsFr,
         courses: coursesFr,
+        'course-materials': courseMaterialsFr,
       },
     },
     fallbackLng: 'pt-BR',
     supportedLngs,
     defaultNS,
-    ns: ['common', 'home', 'research', 'publications', 'resume', 'students', 'courses'],
+    ns: ['common', 'home', 'research', 'publications', 'resume', 'students', 'courses', 'course-materials'],
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],

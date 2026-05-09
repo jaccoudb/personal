@@ -1,0 +1,17 @@
+{
+  "title": "Course Materials",
+  "description": "Access lectures, assignments, support files and complementary materials organized by course.",
+  "loading": "Loading materials...",
+  "empty": "No materials are available yet.",
+  "breadcrumbs": {
+    "label": "Course materials breadcrumb"
+  },
+  "actions": {
+    "open": "Open",
+    "download": "Download"
+  },
+  "errors": {
+    "load": "Could not load the course materials.",
+    "unknown": "Unknown error while loading materials."
+  }
+}

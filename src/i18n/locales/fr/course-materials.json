@@ -1,0 +1,17 @@
+{
+  "title": "Supports de cours",
+  "description": "Accédez aux cours, listes d'exercices, fichiers d'appui et supports complémentaires organisés par cours.",
+  "loading": "Chargement des supports...",
+  "empty": "Aucun support n'est disponible pour le moment.",
+  "breadcrumbs": {
+    "label": "Fil d'Ariane des supports de cours"
+  },
+  "actions": {
+    "open": "Ouvrir",
+    "download": "Télécharger"
+  },
+  "errors": {
+    "load": "Impossible de charger les supports de cours.",
+    "unknown": "Erreur inconnue lors du chargement des supports."
+  }
+}

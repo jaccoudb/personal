@@ -9,6 +9,7 @@ import Publications from './components/publication/Publications';
 import AdvisedStudents from './components/students/AdvisedStudents';
 import Courses from './components/students/Courses';
 import ScrollToTop from './components/ScrollToTop';
+import CourseMaterialsPage from './pages/course-materials/CourseMaterialsPage';
 
 // Placeholders para páginas que serão criadas
 
@@ -25,6 +26,7 @@ export default function Page(props: { disableCustomTheme?: boolean }) {
         <Route path="/publications" element={<Publications />} />
         <Route path="/advised" element={<AdvisedStudents />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/courses/materials" element={<CourseMaterialsPage />} />
       </Routes>
 
        <ScrollToTop />

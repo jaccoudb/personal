@@ -1,5 +1,6 @@
 // src/components/Courses.tsx
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -21,6 +22,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import WorkIcon from '@mui/icons-material/Work';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import { useTranslation } from 'react-i18next';
 import { courses, getLevelColor, type Course, type CourseLevel } from '../../data/coursesData';
 
@@ -86,6 +88,19 @@ export default function Courses() {
                 >
                     {t('subtitle', { ns: 'courses' })}
                 </Typography>
+
+                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
+                    <Button
+                        component={RouterLink}
+                        to="/courses/materials"
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<FolderOpenIcon />}
+                        sx={{ borderRadius: 2, textTransform: 'none' }}
+                    >
+                        {t('courseMaterials', { ns: 'courses' })}
+                    </Button>
+                </Box>
 
                 {/* CSS Grid com auto-fit para centralizar */}
                 <Box
@@ -194,7 +209,7 @@ export default function Courses() {
                                             </Box>
 
                                             {/* Créditos */}
-                                            <Stack direction="row" sx={{alignItems:"center"}} spacing={1}>
+                                            <Stack direction="row" sx={{ alignItems: "center" }} spacing={1}>
                                                 <CreditCardIcon sx={{ fontSize: 16, color: 'text.secondary', flexShrink: 0, minWidth: 20 }} />
                                                 <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
                                                     {t('creditsWorkload', { ns: 'courses', credits: course.credits, workload: course.workload })}

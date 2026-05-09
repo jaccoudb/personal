@@ -5,6 +5,7 @@
   "schedule": "Horários",
   "syllabus": "Ementa",
   "additionalInfo": "Informações Adicionais",
+  "courseMaterials": "Material do Curso",
   "credits": "{{count}} créditos",
   "hours": "{{count}} horas",
   "creditsWorkload": "{{credits}} créditos | {{workload}}h"

@@ -6,6 +6,7 @@ import publications from './locales/pt-BR/publications.json';
 import resume from './locales/pt-BR/resume.json';
 import students from './locales/pt-BR/students.json';
 import courses from './locales/pt-BR/courses.json';
+import courseMaterials from './locales/pt-BR/course-materials.json';
 
 declare module 'react-i18next' {
   interface CustomTypeOptions {
@@ -18,6 +19,7 @@ declare module 'react-i18next' {
       resume: typeof resume;
       students: typeof students;
       courses: typeof courses;
+      'course-materials': typeof courseMaterials;
     };
   }
 }

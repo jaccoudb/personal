@@ -1,0 +1,17 @@
+{
+  "title": "Material do Curso",
+  "description": "Acesse aulas, listas, arquivos de apoio e materiais complementares organizados por curso.",
+  "loading": "Carregando materiais...",
+  "empty": "Nenhum material disponível no momento.",
+  "breadcrumbs": {
+    "label": "Navegação da página de materiais"
+  },
+  "actions": {
+    "open": "Abrir",
+    "download": "Baixar"
+  },
+  "errors": {
+    "load": "Não foi possível carregar os materiais do curso.",
+    "unknown": "Erro desconhecido ao carregar materiais."
+  }
+}

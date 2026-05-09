@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -119,26 +119,45 @@ export default function AppAppBar() {
             justifyContent: 'center',
           }}
         >
-          {activeMenuItems.map((item) => (
-            <Button 
-              key={item.label}
-              color="inherit" 
-              sx={{ 
-                textTransform: 'none',
-                fontWeight: isActive(item.path) && !item.sectionId ? 'bold' : 'normal',
-                borderBottom: isActive(item.path) && !item.sectionId ? '2px solid' : 'none',
-                borderRadius: 0,
-                '&:hover': {
-                  borderBottom: '2px solid',
-                },
-                opacity: item.disabled ? 0.5 : 1,
-              }}
-              onClick={() => handleNavigation(item.path, item.sectionId)}
-              disabled={item.disabled}
-            >
-              {item.label}
-            </Button>
-          ))}
+          {activeMenuItems.map((item) => {
+            const buttonSx = {
+              textTransform: 'none',
+              fontWeight: isActive(item.path) && !item.sectionId ? 'bold' : 'normal',
+              borderBottom: isActive(item.path) && !item.sectionId ? '2px solid' : 'none',
+              borderRadius: 0,
+              '&:hover': {
+                borderBottom: '2px solid',
+              },
+              opacity: item.disabled ? 0.5 : 1,
+            };
+
+            // if (item.useLink) {
+            //   return (
+            //     <Button
+            //       key={item.label}
+            //       component={RouterLink}
+            //       to={item.path}
+            //       color="inherit"
+            //       sx={buttonSx}
+            //       disabled={item.disabled}
+            //     >
+            //       {item.label}
+            //     </Button>
+            //   );
+            // }
+
+            return (
+              <Button
+                key={item.label}
+                color="inherit"
+                sx={buttonSx}
+                onClick={() => handleNavigation(item.path, item.sectionId)}
+                disabled={item.disabled}
+              >
+                {item.label}
+              </Button>
+            );
+          })}
         </Box>
 
         {/* Direita */}
@@ -172,20 +191,39 @@ export default function AppAppBar() {
             {t('nav.menu')}
           </Typography>
           
-          {activeMenuItems.map((item) => (
-            <MenuItem 
-              key={item.label}
-              onClick={() => handleNavigation(item.path, item.sectionId)}
-              disabled={item.disabled}
-              sx={{
-                fontWeight: isActive(item.path) && !item.sectionId ? 'bold' : 'normal',
-                opacity: item.disabled ? 0.5 : 1,
-              }}
-            >
-              {item.label}
-              {item.disabled && ` (${t('nav.soon')})`}
-            </MenuItem>
-          ))}
+          {activeMenuItems.map((item) => {
+            const menuItemSx = {
+              fontWeight: isActive(item.path) && !item.sectionId ? 'bold' : 'normal',
+              opacity: item.disabled ? 0.5 : 1,
+            };
+
+            // if (item.useLink) {
+            //   return (
+            //     <MenuItem
+            //       key={item.label}
+            //       component={RouterLink}
+            //       to={item.path}
+            //       onClick={toggleDrawer(false)}
+            //       disabled={item.disabled}
+            //       sx={menuItemSx}
+            //     >
+            //       {item.label}
+            //     </MenuItem>
+            //   );
+            // }
+
+            return (
+              <MenuItem
+                key={item.label}
+                onClick={() => handleNavigation(item.path, item.sectionId)}
+                disabled={item.disabled}
+                sx={menuItemSx}
+              >
+                {item.label}
+                {item.disabled && ` (${t('nav.soon')})`}
+              </MenuItem>
+            );
+          })}
 
           <Divider sx={{ my: 2 }} />
         </Box>
