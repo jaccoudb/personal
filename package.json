@@ -1,8 +1,9 @@
 {
-  "name": "material-ui-vite-ts",
+  "name": "personal-page-mui-vite-ts",
   "version": "7.0.0",
   "private": true,
   "type": "module",
+  "homepage": "https://rachellucena.github.io/personal_page",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -12,7 +12,7 @@ import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropdown';
+// import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropdown';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'grid',
@@ -148,7 +148,7 @@ export default function AppAppBar() {
           }}
         >
           {/* Escolha de tema */}
-          <ColorModeIconDropdown />
+          {/* <ColorModeIconDropdown /> */}
           <IconButton onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', md: 'none' } }}>
             <MenuIcon />
           </IconButton>

@@ -17,7 +17,7 @@ export default function Publications() {
   const [filterType, setFilterType] = useState<string | null>('all');
 
   const handleFilterChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _: React.MouseEvent<HTMLElement>,
     newFilter: string | null,
   ) => {
     setFilterType(newFilter);
@@ -81,7 +81,7 @@ export default function Publications() {
         >
           Publications
         </Typography>
-        
+
         <Typography
           variant="body1"
           sx={{
@@ -153,9 +153,9 @@ export default function Publications() {
                 >
                   <CardContent>
                     <Stack spacing={1.5}>
-                      <Stack 
-                        direction="row" 
-                        sx={{ 
+                      <Stack
+                        direction="row"
+                        sx={{
                           justifyContent: 'space-between',
                           alignItems: 'flex-start',
                           flexWrap: 'wrap',
@@ -175,22 +175,21 @@ export default function Publications() {
                           }}
                         />
                       </Stack>
-                      
+
                       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         {formatAuthors(pub.authors)}
                       </Typography>
-                      
+
                       <Typography variant="body2" sx={{ color: 'text.primary' }}>
                         <strong>{pub.journal}</strong>
                         {pub.volume && `, ${pub.volume}`}
                         {pub.pages && `, ${pub.pages}`}
                       </Typography>
-                      
+
                       {/* Ano com DOI ao lado - apenas ícone, sem botão */}
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="caption" color="text.secondary">
-                          {pub.year}
-                        </Typography>
+                      <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>                        <Typography variant="caption" color="text.secondary">
+                        {pub.year}
+                      </Typography>
                         {pub.doi && (
                           <Tooltip title="Ver DOI" arrow>
                             <a

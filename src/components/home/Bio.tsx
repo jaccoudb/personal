@@ -41,7 +41,7 @@ export default function Bio() {
             />
 
             <Typography variant="h2" sx={{ fontWeight: 600 }}>
-              Dra. Rachel Lucena
+              Rachel Lucena, D.Sc
             </Typography>
 
             {/* <Typography variant="caption" sx={{ fontWeight: 600 }}>

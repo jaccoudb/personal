@@ -9,7 +9,6 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import WorkIcon from '@mui/icons-material/Work';
-import { alpha } from '@mui/material/styles';
 import { sortedExperiences } from '../../data/experience';
 
 export default function Experience() {

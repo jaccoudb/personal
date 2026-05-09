@@ -1,6 +1,4 @@
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Experience from './Experience';
 import { Divider } from '@mui/material';
 import Education from './Education';

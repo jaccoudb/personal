@@ -18,7 +18,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ScheduleIcon from '@mui/icons-material/Schedule';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import WorkIcon from '@mui/icons-material/Work';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
@@ -137,7 +136,7 @@ export default function Courses() {
                                         })}
                                     </Stack>
 
-                                    <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 1 }}>
+                                    <Typography variant="caption" color="text.secondary" sx={{ mb: 1, display: "block" }}>
                                         {course.code}
                                     </Typography>
 
@@ -183,7 +182,7 @@ export default function Courses() {
                                             {/* Horários (array) */}
                                             <Box>
                                                 {course.schedule.map((time, idx) => (
-                                                    <Stack key={idx} direction="row" alignItems="center" spacing={1} sx={{ mb: idx < course.schedule.length - 1 ? 1 : 0 }}>
+                                                    <Stack key={idx} direction="row" spacing={1} sx={{ alignItems: "center", mb: idx < course.schedule.length - 1 ? 1 : 0 }}>
                                                         <AccessTimeIcon sx={{ fontSize: 16, color: 'text.secondary', flexShrink: 0, minWidth: 20 }} />
                                                         <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
                                                             {time}
@@ -193,7 +192,7 @@ export default function Courses() {
                                             </Box>
 
                                             {/* Créditos */}
-                                            <Stack direction="row" alignItems="center" spacing={1}>
+                                            <Stack direction="row" sx={{alignItems:"center"}} spacing={1}>
                                                 <CreditCardIcon sx={{ fontSize: 16, color: 'text.secondary', flexShrink: 0, minWidth: 20 }} />
                                                 <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
                                                     {course.credits} créditos | {course.workload}h
@@ -229,7 +228,7 @@ export default function Courses() {
                         <>
                             <DialogTitle>
                                 <Box>
-                                    <Typography variant="caption" color="text.secondary" display="block">
+                                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
                                         {selectedCourse.code}
                                     </Typography>
                                     <Typography variant="h5" sx={{ fontWeight: 600 }}>
