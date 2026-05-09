@@ -1,5 +1,64 @@
 {
   "courses": [
-    
+    {
+      "id": "calculo-numerico",
+      "title": {
+        "pt-BR": "Cálculo Numérico",
+        "en": "Numerical Analysis",
+        "fr": "Calcul Numérique"
+      },
+      "description": {
+        "pt-BR": "Materiais do curso.",
+        "en": "Course materials.",
+        "fr": "Supports du cours."
+      },
+      "materials": [
+        {
+          "title": "Aula 01",
+          "file": "calculo-numerico/aula-01.pdf",
+          "type": "pdf"
+        },
+        {
+          "title": "Aula 02",
+          "file": "calculo-numerico/aula-02.pdf",
+          "type": "pdf"
+        },
+        {
+          "title": "Lista 01",
+          "file": "calculo-numerico/lista-01.pdf",
+          "type": "pdf"
+        }
+      ]
+    },
+    {
+      "id": "metodos-numericos-2026-1",
+      "title": {
+        "pt-BR": "Métodos Computacionais - 2026/1",
+        "en": "Numerical Analysis",
+        "fr": "Calcul Numérique"
+      },
+      "description": {
+        "pt-BR": "Materiais do curso.",
+        "en": "Course materials.",
+        "fr": "Supports du cours."
+      },
+      "materials": [
+        {
+          "title": "Aula 01",
+          "file": "metodos-numericos-2026-1/aula-01.pdf",
+          "type": "pdf"
+        },
+        {
+          "title": "Aula 02",
+          "file": "metodos-numericos-2026-1/aula-02.pdf",
+          "type": "pdf"
+        },
+        {
+          "title": "Lista 01",
+          "file": "metodos-numericos-2026-1/lista-01.pdf",
+          "type": "pdf"
+        }
+      ]
+    }
   ]
 }
