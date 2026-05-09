@@ -1,0 +1,11 @@
+{
+  "title": "Cursos Ministrados",
+  "subtitle": "Disciplinas ministradas na graduação e pós-graduação em Engenharia Mecânica",
+  "viewSyllabus": "Ver Ementa",
+  "schedule": "Horários",
+  "syllabus": "Ementa",
+  "additionalInfo": "Informações Adicionais",
+  "credits": "{{count}} créditos",
+  "hours": "{{count}} horas",
+  "creditsWorkload": "{{credits}} créditos | {{workload}}h"
+}

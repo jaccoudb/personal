@@ -1,0 +1,19 @@
+{
+  "title": "Publications",
+  "subtitle": "Articles complets publiés dans des revues, actes de congrès et résumés",
+  "filterAriaLabel": "filtre des publications",
+  "empty": "Aucune publication trouvée pour ce filtre.",
+  "authorsJoiner": "et",
+  "types": {
+    "all": "Toutes",
+    "journal": "Revues",
+    "journalSingular": "Revue",
+    "conference": "Conférences",
+    "conferenceSingular": "Conférence",
+    "extended-abstract": "Résumés étendus",
+    "extended-abstractSingular": "Résumé étendu",
+    "abstract": "Résumés",
+    "abstractSingular": "Résumé",
+    "other": "Autre"
+  }
+}

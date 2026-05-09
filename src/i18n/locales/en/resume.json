@@ -1,0 +1,20 @@
+{
+  "experienceTitle": "Professional Experience",
+  "educationTitle": "Education",
+  "advisors": "Advisor(s):",
+  "achievements": "Achievement(s):",
+  "keywords": "Keywords:",
+  "experience": {
+    "details": {
+      "workload40": "Workload: 40 hours",
+      "workload30": "Workload: 30 hours",
+      "workload20": "Workload: 20 hours",
+      "workload10": "Workload: 10 hours",
+      "workload8": "Workload: 8 hours",
+      "workload4": "Workload: 4 hours",
+      "publicServant": "Public servant",
+      "scholarship": "Scholarship holder",
+      "internship": "Internship"
+    }
+  }
+}

@@ -16,8 +16,12 @@
     "@mui/icons-material": "latest",
     "@mui/lab": "^9.0.0-beta.2",
     "@mui/material": "latest",
+    "i18next": "^26.0.10",
+    "i18next-browser-languagedetector": "^8.2.1",
     "react": "latest",
+    "react-country-flag": "^3.1.0",
     "react-dom": "latest",
+    "react-i18next": "^17.0.7",
     "react-icons": "^5.6.0",
     "react-router-dom": "^7.14.2",
     "vite-plugin-svgr": "^5.2.0"

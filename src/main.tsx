@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Page from './App';
+import './i18n';
 
 document.documentElement.setAttribute(
   'data-mui-color-scheme',
@@ -8,7 +9,7 @@ document.documentElement.setAttribute(
 );
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <HashRouter>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <Page />
-  </HashRouter>
+  </BrowserRouter>
 );

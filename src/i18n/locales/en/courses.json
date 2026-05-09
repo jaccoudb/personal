@@ -1,0 +1,11 @@
+{
+  "title": "Courses Taught",
+  "subtitle": "Undergraduate and graduate courses taught in Mechanical Engineering",
+  "viewSyllabus": "View Syllabus",
+  "schedule": "Schedule",
+  "syllabus": "Syllabus",
+  "additionalInfo": "Additional Information",
+  "credits": "{{count}} credits",
+  "hours": "{{count}} hours",
+  "creditsWorkload": "{{credits}} credits | {{workload}}h"
+}

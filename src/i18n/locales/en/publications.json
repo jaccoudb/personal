@@ -1,0 +1,19 @@
+{
+  "title": "Publications",
+  "subtitle": "Full papers published in journals, conference proceedings and abstracts",
+  "filterAriaLabel": "publication filter",
+  "empty": "No publications found for this filter.",
+  "authorsJoiner": "and",
+  "types": {
+    "all": "All",
+    "journal": "Journals",
+    "journalSingular": "Journal",
+    "conference": "Conferences",
+    "conferenceSingular": "Conference",
+    "extended-abstract": "Extended Abstracts",
+    "extended-abstractSingular": "Extended Abstract",
+    "abstract": "Abstracts",
+    "abstractSingular": "Abstract",
+    "other": "Other"
+  }
+}

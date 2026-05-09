@@ -12,8 +12,10 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import { SiDoi } from "react-icons/si";
 import { publications, getTypeColor, filterOptions } from '../../data/publicationsData';
+import { useTranslation } from 'react-i18next';
 
 export default function Publications() {
+  const { t } = useTranslation(['publications', 'common']);
   const [filterType, setFilterType] = useState<string | null>('all');
 
   const handleFilterChange = (
@@ -34,8 +36,9 @@ export default function Publications() {
 
   const formatAuthors = (authors: string[]) => {
     if (authors.length === 1) return authors[0];
-    if (authors.length === 2) return `${authors[0]} e ${authors[1]}`;
-    return `${authors.slice(0, -1).join(', ')} e ${authors[authors.length - 1]}`;
+    const joiner = t('authorsJoiner', { ns: 'publications' });
+    if (authors.length === 2) return `${authors[0]} ${joiner} ${authors[1]}`;
+    return `${authors.slice(0, -1).join(', ')} ${joiner} ${authors[authors.length - 1]}`;
   };
 
   // Contar publicações por tipo
@@ -79,7 +82,7 @@ export default function Publications() {
             },
           }}
         >
-          Publications
+          {t('title', { ns: 'publications' })}
         </Typography>
 
         <Typography
@@ -92,7 +95,7 @@ export default function Publications() {
             mb: 4,
           }}
         >
-          Artigos completos publicados em periódicos, anais de congressos e resumos
+          {t('subtitle', { ns: 'publications' })}
         </Typography>
 
         {/* Filtros */}
@@ -101,7 +104,7 @@ export default function Publications() {
             value={filterType}
             exclusive
             onChange={handleFilterChange}
-            aria-label="filtro de publicações"
+            aria-label={t('filterAriaLabel', { ns: 'publications' })}
             sx={{
               flexWrap: 'wrap',
               gap: 1,
@@ -123,7 +126,7 @@ export default function Publications() {
           >
             {filterOptions.map((option) => (
               <ToggleButton key={option.value} value={option.value}>
-                {option.label} ({counts[option.value as keyof typeof counts]})
+                {t(`types.${option.value}`, { ns: 'publications' })} ({counts[option.value as keyof typeof counts]})
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
@@ -134,7 +137,7 @@ export default function Publications() {
           {sortedPublications.length === 0 ? (
             <Box sx={{ textAlign: 'center', py: 8 }}>
               <Typography variant="h6" color="text.secondary">
-                Nenhuma publicação encontrada para este filtro.
+                {t('empty', { ns: 'publications' })}
               </Typography>
             </Box>
           ) : (
@@ -166,7 +169,7 @@ export default function Publications() {
                           {pub.title}
                         </Typography>
                         <Chip
-                          label={typeInfo.label}
+                          label={t(`types.${pub.type}Singular`, { ns: 'publications' })}
                           size="small"
                           sx={{
                             bgcolor: typeInfo.bg,
@@ -191,7 +194,7 @@ export default function Publications() {
                         {pub.year}
                       </Typography>
                         {pub.doi && (
-                          <Tooltip title="Ver DOI" arrow>
+                          <Tooltip title={t('actions.viewDoi', { ns: 'common' })} arrow>
                             <a
                               href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
                               target="_blank"

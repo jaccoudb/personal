@@ -1,0 +1,50 @@
+{
+  "app": {
+    "name": "Rachel Lucena"
+  },
+  "nav": {
+    "home": "Accueil",
+    "resume": "CV",
+    "research": "Recherche",
+    "publications": "Publications",
+    "students": "Encadrements",
+    "courses": "Cours",
+    "contact": "Contact",
+    "menu": "Menu",
+    "soon": "Bientôt"
+  },
+  "language": {
+    "label": "Choisir la langue",
+    "current": "Langue actuelle",
+    "pt-BR": "Português",
+    "en": "English",
+    "fr": "Français"
+  },
+  "actions": {
+    "close": "Fermer",
+    "showMore": "Plus",
+    "showLess": "Moins",
+    "viewDoi": "Voir le DOI"
+  },
+  "status": {
+    "ongoing": "En cours",
+    "completed": "Terminé"
+  },
+  "levels": {
+    "undergraduate": "Licence",
+    "masters": "Master",
+    "professionalMasters": "Master professionnel",
+    "doctorate": "Doctorat",
+    "scientificInitiation": "Initiation scientifique",
+    "postdoc": "Postdoctorat",
+    "other": "Autre nature"
+  },
+  "roles": {
+    "advisor": "Directrice",
+    "coAdvisor": "Codirectrice",
+    "supervisor": "Superviseure"
+  },
+  "time": {
+    "present": "Actuel"
+  }
+}

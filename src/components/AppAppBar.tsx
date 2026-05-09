@@ -12,6 +12,8 @@ import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 // import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropdown';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -26,6 +28,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 export default function AppAppBar() {
+  const { t } = useTranslation('common');
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = React.useState(false);
@@ -75,13 +78,13 @@ export default function AppAppBar() {
 
   // Configuração dos itens do menu
   const menuItems = [
-    { label: 'Home', path: '/', sectionId: 'home', disabled: false },
-    { label: 'Resume', path: '/resume', sectionId: 'resume', disabled: false },
-    { label: 'Research', path: '/research', disabled: false },
-    { label: 'Publications', path: '/publications', disabled: false },
-    { label: 'Advised Students ', path: '/advised', disabled: false },
-    { label: 'Courses', path: '/courses', disabled: false },
-    { label: 'Contact', path: '/', sectionId: 'contact', disabled: false },
+    { label: t('nav.home'), path: '/', sectionId: 'home', disabled: false },
+    { label: t('nav.resume'), path: '/resume', sectionId: 'resume', disabled: false },
+    { label: t('nav.research'), path: '/research', disabled: false },
+    { label: t('nav.publications'), path: '/publications', disabled: false },
+    { label: t('nav.students'), path: '/advised', disabled: false },
+    { label: t('nav.courses'), path: '/courses', disabled: false },
+    { label: t('nav.contact'), path: '/', sectionId: 'contact', disabled: false },
   ];
 
   // Itens ativos (não desabilitados)
@@ -149,6 +152,7 @@ export default function AppAppBar() {
         >
           {/* Escolha de tema */}
           {/* <ColorModeIconDropdown /> */}
+          <LanguageSwitcher />
           <IconButton onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', md: 'none' } }}>
             <MenuIcon />
           </IconButton>
@@ -165,7 +169,7 @@ export default function AppAppBar() {
           </Box>
 
           <Typography variant="subtitle2" sx={{ px: 2, pt: 2, fontWeight: 'bold', color: 'text.secondary' }}>
-            Menu
+            {t('nav.menu')}
           </Typography>
           
           {activeMenuItems.map((item) => (
@@ -179,7 +183,7 @@ export default function AppAppBar() {
               }}
             >
               {item.label}
-              {item.disabled && " (Em breve)"}
+              {item.disabled && ` (${t('nav.soon')})`}
             </MenuItem>
           ))}
 

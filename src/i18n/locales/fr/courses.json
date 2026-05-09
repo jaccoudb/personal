@@ -1,0 +1,11 @@
+{
+  "title": "Cours dispensés",
+  "subtitle": "Cours de licence et de master en génie mécanique",
+  "viewSyllabus": "Voir le programme",
+  "schedule": "Horaires",
+  "syllabus": "Programme",
+  "additionalInfo": "Informations complémentaires",
+  "credits": "{{count}} crédits",
+  "hours": "{{count}} heures",
+  "creditsWorkload": "{{credits}} crédits | {{workload}}h"
+}

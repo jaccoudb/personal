@@ -13,26 +13,31 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
 import ScienceIcon from '@mui/icons-material/Science';
-import { ongoingProjects, completedProjects } from '../../data/studentsData';
+import { useTranslation } from 'react-i18next';
+import { ongoingProjects, completedProjects, type Student } from '../../data/studentsData';
+
+type StudentLevel = Student['level'];
 
 export default function AdvisedStudents() {
-    const getLevelIcon = (level: string) => {
-        if (level === 'Mestrado') return <SchoolIcon fontSize="small" />;
-        if (level === 'Doutorado') return <ScienceIcon fontSize="small" />;
+    const { t } = useTranslation(['students', 'common']);
+
+    const getLevelIcon = (level: StudentLevel) => {
+        if (level === 'masters') return <SchoolIcon fontSize="small" />;
+        if (level === 'doctorate') return <ScienceIcon fontSize="small" />;
         return <WorkIcon fontSize="small" />;
     };
 
-    const getLevelColor = (level: string) => {
+    const getLevelColor = (level: StudentLevel) => {
         switch (level) {
-            case 'Mestrado': return { bg: '#e3f2fd', color: '#1976d2' };
-            case 'Doutorado': return { bg: '#e8f5e9', color: '#388e3c' };
-            case 'Iniciação Científica': return { bg: '#fff3e0', color: '#f57c00' };
-            case 'Pós-doutorado': return { bg: '#f3e5f5', color: '#7b1fa2' };
+            case 'masters': return { bg: '#e3f2fd', color: '#1976d2' };
+            case 'doctorate': return { bg: '#e8f5e9', color: '#388e3c' };
+            case 'scientificInitiation': return { bg: '#fff3e0', color: '#f57c00' };
+            case 'postdoc': return { bg: '#f3e5f5', color: '#7b1fa2' };
             default: return { bg: '#f5f5f5', color: '#616161' };
         }
     };
 
-    const StudentCard = ({ student }: { student: any }) => {
+    const StudentCard = ({ student }: { student: Student }) => {
         const levelInfo = getLevelColor(student.level);
         return (
             <Card sx={{ mb: 2, '&:hover': { boxShadow: 3 } }}>
@@ -53,14 +58,14 @@ export default function AdvisedStudents() {
                             <Stack direction="row" spacing={1}>
                                 <Chip
                                     icon={getLevelIcon(student.level)}
-                                    label={student.level}
+                                    label={t(`levels.${student.level}`, { ns: 'common' })}
                                     size="small"
                                     sx={{ bgcolor: levelInfo.bg, color: levelInfo.color }}
                                 />
                                 <Chip
-                                    label={student.role}
+                                    label={t(`roles.${student.role}`, { ns: 'common' })}
                                     size="small"
-                                    color={student.role === 'Orientador' ? 'primary' : 'secondary'}
+                                    color={student.role === 'advisor' ? 'primary' : 'secondary'}
                                     variant="outlined"
                                 />
                             </Stack>
@@ -72,12 +77,12 @@ export default function AdvisedStudents() {
 
                         <Typography variant="body2" sx={{ color: 'text.primary' }}>
                             <strong>{student.institution}</strong>
-                            {student.startYear && ` • ${student.startYear}${student.endYear ? ` - ${student.endYear}` : ' - Presente'}`}
+                            {student.startYear && ` • ${student.startYear}${student.endYear ? ` - ${student.endYear}` : ` - ${t('time.present', { ns: 'common' })}`}`}
                         </Typography>
 
                         {student.funding && (
                             <Typography variant="caption" color="text.secondary">
-                                Fomento: {student.funding}
+                                {t('funding', { ns: 'students' })}: {student.funding}
                             </Typography>
                         )}
                     </Stack>
@@ -87,14 +92,14 @@ export default function AdvisedStudents() {
     };
 
     // Agrupar projetos por nível
-    const groupByLevel = (projects: any[]) => {
-        const groups: { [key: string]: any[] } = {};
-        const order = ['Doutorado', 'Pós-doutorado', 'Mestrado', 'Iniciação Científica', 'Outra natureza'];
+    const groupByLevel = (projects: Student[]) => {
+        const groups: Partial<Record<StudentLevel, Student[]>> = {};
+        const order: StudentLevel[] = ['doctorate', 'postdoc', 'masters', 'scientificInitiation', 'other'];
         projects.forEach(project => {
             if (!groups[project.level]) {
                 groups[project.level] = [];
             }
-            groups[project.level].push(project);
+            groups[project.level]?.push(project);
         });
         return { groups, order };
     };
@@ -134,7 +139,7 @@ export default function AdvisedStudents() {
                         },
                     }}
                 >
-                    Advised Students
+                    {t('title', { ns: 'students' })}
                 </Typography>
 
                 <Typography
@@ -147,7 +152,7 @@ export default function AdvisedStudents() {
                         mb: 6,
                     }}
                 >
-                    Orientações e supervisões acadêmicas em andamento e concluídas
+                    {t('subtitle', { ns: 'students' })}
                 </Typography>
 
                 {/* Projetos em Andamento */}
@@ -166,7 +171,7 @@ export default function AdvisedStudents() {
                         }}
                     >
                         <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                            Orientações e supervisões em andamento ({ongoingProjects.length})
+                            {t('ongoingTitle', { ns: 'students' })} ({ongoingProjects.length})
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails sx={{ pt: 3 }}>
@@ -174,7 +179,7 @@ export default function AdvisedStudents() {
                             ongoingGroups.groups[level] && ongoingGroups.groups[level].length > 0 && (
                                 <Box key={level} sx={{ mb: 4 }}>
                                     <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: 'primary.main' }}>
-                                        {level}
+                                        {t(`levels.${level}`, { ns: 'common' })}
                                     </Typography>
                                     {ongoingGroups.groups[level].map((student) => (
                                         <StudentCard key={student.id} student={student} />
@@ -201,7 +206,7 @@ export default function AdvisedStudents() {
                         }}
                     >
                         <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                            Orientações e supervisões concluídas ({completedProjects.length})
+                            {t('completedTitle', { ns: 'students' })} ({completedProjects.length})
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails sx={{ pt: 3 }}>
@@ -209,7 +214,7 @@ export default function AdvisedStudents() {
                             completedGroups.groups[level] && completedGroups.groups[level].length > 0 && (
                                 <Box key={level} sx={{ mb: 4 }}>
                                     <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: 'secondary.main' }}>
-                                        {level}
+                                        {t(`levels.${level}`, { ns: 'common' })}
                                     </Typography>
                                     {completedGroups.groups[level].map((student) => (
                                         <StudentCard key={student.id} student={student} />

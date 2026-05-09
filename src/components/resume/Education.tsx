@@ -10,9 +10,11 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import SchoolIcon from '@mui/icons-material/School';
 import Chip from '@mui/material/Chip';
+import { useTranslation } from 'react-i18next';
 import { educations } from '../../data/education';
 
 export default function Education() {
+  const { t } = useTranslation('resume');
   // Ordenar por ano (mais recente primeiro)
   const sortedEducations = [...educations].sort((a, b) => {
     const getStartYear = (period: string) => parseInt(period.split(' - ')[0]);
@@ -51,7 +53,7 @@ export default function Education() {
             },
           }}
         >
-          Education
+          {t('educationTitle')}
         </Typography>
 
         <Timeline position="alternate">
@@ -91,7 +93,7 @@ export default function Education() {
                 {edu.advisors && edu.advisors.length > 0 && (
                   <Box sx={{ mt: 1, mb: 1, textAlign: 'left' }}>
                     <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', display: 'block', mb: 0.5 }}>
-                      Orientador(es):
+                      {t('advisors')}
                     </Typography>
                     {edu.advisors.map((advisor, i) => (
                       <Typography key={i} variant="caption" sx={{ color: 'text.secondary', display: 'block', ml: 1 }}>
@@ -105,7 +107,7 @@ export default function Education() {
                 {edu.achievements && edu.achievements.length > 0 && (
                   <Box sx={{ mt: 1, mb: 1, textAlign: 'left' }}>
                     <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', display: 'block', mb: 0.5 }}>
-                      Realização(ões):
+                      {t('achievements')}
                     </Typography>
                     {edu.achievements.map((achievement, i) => (
                       <Typography key={i} variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 0.5 }}>
@@ -119,7 +121,7 @@ export default function Education() {
                 {edu.keys && edu.keys.length > 0 && (
                   <Box sx={{ mt: 1, textAlign: 'left' }}>
                     <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary', display: 'block', mb: 0.5 }}>
-                      <strong>Palavras-chave:</strong>
+                      <strong>{t('keywords')}</strong>
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                       {edu.keys.map((key, i) => (

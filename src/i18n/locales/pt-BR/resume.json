@@ -1,0 +1,20 @@
+{
+  "experienceTitle": "Experiência Profissional",
+  "educationTitle": "Educação",
+  "advisors": "Orientador(es):",
+  "achievements": "Realização(ões):",
+  "keywords": "Palavras-chave:",
+  "experience": {
+    "details": {
+      "workload40": "Carga horária: 40 horas",
+      "workload30": "Carga horária: 30 horas",
+      "workload20": "Carga horária: 20 horas",
+      "workload10": "Carga horária: 10 horas",
+      "workload8": "Carga horária: 8 horas",
+      "workload4": "Carga horária: 4 horas",
+      "publicServant": "Regime: Servidor público",
+      "scholarship": "Bolsista",
+      "internship": "Estágio"
+    }
+  }
+}

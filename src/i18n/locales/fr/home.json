@@ -1,0 +1,33 @@
+{
+  "bio": {
+    "name": "Rachel Lucena, D.Sc",
+    "position": "Professeure adjointe, UERJ",
+    "institution": "UERJ - Université de l'État de Rio de Janeiro",
+    "summaryTitle": "Résumé professionnel",
+    "summary": "Chercheuse expérimentée en génie mécanique et en mathématiques, spécialisée dans les principes variationnels et les méthodes numériques. Ses recherches portent sur la simulation numérique, la méthode des éléments finis, les écoulements en milieux poreux et les écoulements compressibles.",
+    "educationTitle": "Formation",
+    "interestsTitle": "Intérêts",
+    "education": [
+      { "title": "Doctorat en génie mécanique", "period": "2013 - 2016", "place": "UERJ" },
+      { "title": "Master en génie métallurgique et des matériaux", "period": "2011 - 2013", "place": "COPPE/UFRJ" },
+      { "title": "Licence en génie de production", "period": "2015 - 2021", "place": "CEFET/RJ" },
+      { "title": "Licence en mathématiques", "period": "2006 - 2010", "place": "UFRRJ" }
+    ],
+    "interests": ["Méthodes numériques", "Dynamique des fluides numérique", "Méthode des éléments finis"]
+  },
+  "contact": {
+    "department": "Département de génie mécanique - Université de l'État de Rio de Janeiro (MECAN/UERJ)",
+    "program": "Programme de troisième cycle en génie mécanique - Université de l'État de Rio de Janeiro (PPG-EM/UERJ)",
+    "laboratory": "Laboratoire : Groupe d'études et de simulations environnementales en réservoirs - GESAR",
+    "address": "Rua Fonseca Teles, 121, Rio de Janeiro, CEP 20940-903 RJ - Brésil",
+    "phoneEmail": "Tél. : +55 (21) 2332-4733 | E-mail : rachel.lucena@eng.uerj.br",
+    "rights": "Tous droits réservés"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      { "question": "Comment prendre contact ?", "answer": "Vous pouvez envoyer un e-mail à rachel.lucena@eng.uerj.br." },
+      { "question": "Quels sont les principaux axes de recherche ?", "answer": "Méthodes numériques, CFD, éléments finis, écoulements en milieux poreux et applications biomédicales." }
+    ]
+  }
+}

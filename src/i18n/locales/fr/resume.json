@@ -1,0 +1,20 @@
+{
+  "experienceTitle": "Expérience professionnelle",
+  "educationTitle": "Formation",
+  "advisors": "Directeur(s) :",
+  "achievements": "Réalisation(s) :",
+  "keywords": "Mots-clés :",
+  "experience": {
+    "details": {
+      "workload40": "Charge horaire : 40 heures",
+      "workload30": "Charge horaire : 30 heures",
+      "workload20": "Charge horaire : 20 heures",
+      "workload10": "Charge horaire : 10 heures",
+      "workload8": "Charge horaire : 8 heures",
+      "workload4": "Charge horaire : 4 heures",
+      "publicServant": "Fonction publique",
+      "scholarship": "Boursière",
+      "internship": "Stage"
+    }
+  }
+}

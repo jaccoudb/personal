@@ -1,0 +1,19 @@
+{
+  "title": "Publicações",
+  "subtitle": "Artigos completos publicados em periódicos, anais de congressos e resumos",
+  "filterAriaLabel": "filtro de publicações",
+  "empty": "Nenhuma publicação encontrada para este filtro.",
+  "authorsJoiner": "e",
+  "types": {
+    "all": "Todos",
+    "journal": "Periódicos",
+    "journalSingular": "Periódico",
+    "conference": "Congressos",
+    "conferenceSingular": "Conferência",
+    "extended-abstract": "Resumos Expandidos",
+    "extended-abstractSingular": "Resumo Expandido",
+    "abstract": "Resumos",
+    "abstractSingular": "Resumo",
+    "other": "Outro"
+  }
+}

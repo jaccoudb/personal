@@ -3,7 +3,7 @@ export interface Course {
   id: number;
   code: string;
   name: string;
-  level: string[]; // Agora é um array
+  level: CourseLevel[];
   period: string;
   schedule: string[];
   syllabus: string[];
@@ -13,13 +13,15 @@ export interface Course {
   classCode?: string; // Código da turma (opcional)
 }
 
-export const getLevelColor = (level: string) => {
+export type CourseLevel = "undergraduate" | "masters" | "doctorate";
+
+export const getLevelColor = (level: CourseLevel) => {
   switch (level) {
-    case "Graduação":
+    case "undergraduate":
       return { bg: "#e3f2fd", color: "#1976d2", border: "#1976d2" };
-    case "Mestrado":
+    case "masters":
       return { bg: "#e8f5e9", color: "#388e3c", border: "#388e3c" };
-    case "Doutorado":
+    case "doctorate":
       return { bg: "#f3e5f5", color: "#7b1fa2", border: "#7b1fa2" };
     default:
       return { bg: "#f5f5f5", color: "#616161", border: "#616161" };
@@ -31,7 +33,7 @@ export const courses: Course[] = [
     id: 1,
     code: "",
     name: "Métodos Computacionais",
-    level: ["Mestrado", "Doutorado"],
+    level: ["masters", "doctorate"],
     period: "2026.1",
     schedule: ["Terças-feiras, 12:30 - 14:20", "Quintas-feiras, 16:10 - 17:50"],
     classCode: "",
@@ -52,7 +54,7 @@ export const courses: Course[] = [
     id: 2,
     code: "FEN03-02040",
     name: "Fenômenos de Transporte",
-    level: ["Graduação"],
+    level: ["undergraduate"],
     period: "2026.1",
     schedule: [
       "Turma 4 - Quartas e Sextas-feiras (M3-M4)",

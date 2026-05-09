@@ -1,0 +1,15 @@
+{
+  "title": "Projetos de Pesquisa",
+  "subtitle": "Projetos de pesquisa em andamento e concluídos, organizados por ordem cronológica",
+  "filterLabel": "Filtrar por Coordenador",
+  "allCoordinators": "Todos os Coordenadores",
+  "empty": "Nenhum projeto encontrado para este coordenador.",
+  "coordinators": "Coordenadores:",
+  "researchers": "Integrantes:",
+  "students": {
+    "undergraduate": "Graduação",
+    "masters": "Mestrado",
+    "professionalMasters": "Mestrado Profissional",
+    "doctorate": "Doutorado"
+  }
+}

@@ -21,13 +21,15 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import WorkIcon from '@mui/icons-material/Work';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import { courses, getLevelColor } from '../../data/coursesData';
+import { useTranslation } from 'react-i18next';
+import { courses, getLevelColor, type Course, type CourseLevel } from '../../data/coursesData';
 
 export default function Courses() {
-    const [selectedCourse, setSelectedCourse] = useState<any>(null);
+    const { t } = useTranslation(['courses', 'common']);
+    const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
     const [dialogOpen, setDialogOpen] = useState(false);
 
-    const handleOpenDialog = (course: any) => {
+    const handleOpenDialog = (course: Course) => {
         setSelectedCourse(course);
         setDialogOpen(true);
     };
@@ -69,7 +71,7 @@ export default function Courses() {
                         },
                     }}
                 >
-                    Cursos Ministrados
+                    {t('title', { ns: 'courses' })}
                 </Typography>
 
                 <Typography
@@ -82,7 +84,7 @@ export default function Courses() {
                         mb: 6,
                     }}
                 >
-                    Disciplinas ministradas na graduação e pós-graduação em Engenharia Mecânica
+                    {t('subtitle', { ns: 'courses' })}
                 </Typography>
 
                 {/* CSS Grid com auto-fit para centralizar */}
@@ -124,7 +126,7 @@ export default function Courses() {
                                             return (
                                                 <Chip
                                                     key={idx}
-                                                    label={level}
+                                                    label={t(`levels.${level}`, { ns: 'common' })}
                                                     size="small"
                                                     sx={{
                                                         bgcolor: levelInfoItem.bg,
@@ -195,7 +197,7 @@ export default function Courses() {
                                             <Stack direction="row" sx={{alignItems:"center"}} spacing={1}>
                                                 <CreditCardIcon sx={{ fontSize: 16, color: 'text.secondary', flexShrink: 0, minWidth: 20 }} />
                                                 <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
-                                                    {course.credits} créditos | {course.workload}h
+                                                    {t('creditsWorkload', { ns: 'courses', credits: course.credits, workload: course.workload })}
                                                 </Typography>
                                             </Stack>
                                         </Stack>
@@ -209,7 +211,7 @@ export default function Courses() {
                                         fullWidth
                                         sx={{ borderRadius: 2 }}
                                     >
-                                        Ver Ementa
+                                        {t('viewSyllabus', { ns: 'courses' })}
                                     </Button>
                                 </CardActions>
                             </Card>
@@ -235,12 +237,12 @@ export default function Courses() {
                                         {selectedCourse.name}
                                     </Typography>
                                     <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap', gap: 1 }}>
-                                        {selectedCourse.level.map((level: string, idx: number) => {
+                                        {selectedCourse.level.map((level: CourseLevel, idx: number) => {
                                             const levelInfoItem = getLevelColor(level);
                                             return (
                                                 <Chip
                                                     key={idx}
-                                                    label={level}
+                                                    label={t(`levels.${level}`, { ns: 'common' })}
                                                     size="small"
                                                     sx={{
                                                         bgcolor: levelInfoItem.bg,
@@ -267,7 +269,7 @@ export default function Courses() {
                                     <Box>
                                         <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
                                             <WorkIcon sx={{ fontSize: 20, mr: 1, verticalAlign: 'middle' }} />
-                                            Horários
+                                            {t('schedule', { ns: 'courses' })}
                                         </Typography>
                                         <List dense>
                                             {selectedCourse.schedule.map((time: string, idx: number) => (
@@ -284,7 +286,7 @@ export default function Courses() {
                                     <Box>
                                         <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
                                             <MenuBookIcon sx={{ fontSize: 20, mr: 1, verticalAlign: 'middle' }} />
-                                            Ementa
+                                            {t('syllabus', { ns: 'courses' })}
                                         </Typography>
                                         <List dense>
                                             {selectedCourse.syllabus.map((item: string, index: number) => (
@@ -307,16 +309,16 @@ export default function Courses() {
 
                                     <Box>
                                         <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
-                                            Informações Adicionais
+                                            {t('additionalInfo', { ns: 'courses' })}
                                         </Typography>
                                         <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', gap: 1 }}>
                                             <Chip
-                                                label={`${selectedCourse.credits} créditos`}
+                                                label={t('credits', { ns: 'courses', count: selectedCourse.credits })}
                                                 size="small"
                                                 variant="outlined"
                                             />
                                             <Chip
-                                                label={`${selectedCourse.workload} horas`}
+                                                label={t('hours', { ns: 'courses', count: selectedCourse.workload })}
                                                 size="small"
                                                 variant="outlined"
                                             />
@@ -325,7 +327,7 @@ export default function Courses() {
                                 </Stack>
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleCloseDialog}>Fechar</Button>
+                                <Button onClick={handleCloseDialog}>{t('actions.close', { ns: 'common' })}</Button>
                             </DialogActions>
                         </>
                     )}

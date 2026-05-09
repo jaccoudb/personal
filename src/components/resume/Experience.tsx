@@ -9,9 +9,12 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import WorkIcon from '@mui/icons-material/Work';
+import { useTranslation } from 'react-i18next';
 import { sortedExperiences } from '../../data/experience';
 
 export default function Experience() {
+  const { t } = useTranslation('resume');
+
   return (
     <Box
       id="experience"
@@ -44,7 +47,7 @@ export default function Experience() {
             },
           }}
         >
-          Professional Experience
+          {t('experienceTitle')}
         </Typography>
 
         {/* Experiência Profissional */}

@@ -1,0 +1,15 @@
+{
+  "title": "Projets de recherche",
+  "subtitle": "Projets de recherche en cours et terminés, organisés chronologiquement",
+  "filterLabel": "Filtrer par coordinatrice ou coordinateur",
+  "allCoordinators": "Tous les coordinateurs",
+  "empty": "Aucun projet trouvé pour ce coordinateur.",
+  "coordinators": "Coordinateurs :",
+  "researchers": "Membres :",
+  "students": {
+    "undergraduate": "Licence",
+    "masters": "Master",
+    "professionalMasters": "Master professionnel",
+    "doctorate": "Doctorat"
+  }
+}

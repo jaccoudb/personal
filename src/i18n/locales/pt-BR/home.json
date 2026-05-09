@@ -1,0 +1,33 @@
+{
+  "bio": {
+    "name": "Rachel Lucena, D.Sc",
+    "position": "Professora Adjunta, UERJ",
+    "institution": "UERJ - Universidade do Estado do Rio de Janeiro",
+    "summaryTitle": "Resumo Profissional",
+    "summary": "Pesquisadora com experiência nas áreas de Engenharia Mecânica e Matemática, com ênfase em princípios variacionais e métodos numéricos, desenvolvendo pesquisas principalmente nos seguintes temas: simulação numérica, método dos elementos finitos, escoamento em meios porosos e escoamentos compressíveis.",
+    "educationTitle": "Educação",
+    "interestsTitle": "Interesses",
+    "education": [
+      { "title": "Doutorado em Engenharia Mecânica", "period": "2013 - 2016", "place": "UERJ" },
+      { "title": "Mestrado em Engenharia Metalúrgica e de Materiais", "period": "2011 - 2013", "place": "COPPE/UFRJ" },
+      { "title": "Graduação em Engenharia de Produção", "period": "2015 - 2021", "place": "CEFET/RJ" },
+      { "title": "Licenciatura em Matemática", "period": "2006 - 2010", "place": "UFRRJ" }
+    ],
+    "interests": ["Métodos Numéricos", "Dinâmica dos Fluidos Computacional", "Método dos Elementos Finitos"]
+  },
+  "contact": {
+    "department": "Departamento de Engenharia Mecânica - Universidade do Estado do Rio de Janeiro (MECAN/UERJ)",
+    "program": "Programa de Pós-graduação em Engenharia Mecânica - Universidade do Estado do Rio de Janeiro (PPG-EM/UERJ)",
+    "laboratory": "Laboratório: Grupo de Estudos e Simulações Ambientais em Reservatórios - GESAR",
+    "address": "Rua Fonseca Teles, 121, Rio de Janeiro, CEP 20940-903 RJ - Brasil",
+    "phoneEmail": "Tel: +55 (21) 2332-4733 | E-mail: rachel.lucena@eng.uerj.br",
+    "rights": "Todos os direitos reservados"
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "items": [
+      { "question": "Como entro em contato?", "answer": "Você pode enviar um e-mail para rachel.lucena@eng.uerj.br." },
+      { "question": "Quais são as principais áreas de pesquisa?", "answer": "Métodos numéricos, CFD, elementos finitos, escoamentos em meios porosos e aplicações biomédicas." }
+    ]
+  }
+}

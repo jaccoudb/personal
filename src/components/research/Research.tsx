@@ -16,8 +16,10 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { researchProjects } from '../../data/researchData';
 import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export default function Research() {
+  const { t } = useTranslation(['research', 'common']);
   const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
   const [selectedCoordinator, setSelectedCoordinator] = useState<string>('all');
 
@@ -96,7 +98,7 @@ export default function Research() {
             },
           }}
         >
-          Research Projects
+          {t('title', { ns: 'research' })}
         </Typography>
 
         <Typography
@@ -109,7 +111,7 @@ export default function Research() {
             mb: 4,
           }}
         >
-          Projetos de pesquisa em andamento e concluídos, organizados por ordem cronológica
+          {t('subtitle', { ns: 'research' })}
         </Typography>
 
         {/* Filtro por Coordenador */}
@@ -122,19 +124,19 @@ export default function Research() {
                 px: 0.5,
               }}
             >
-              Filtrar por Coordenador
+              {t('filterLabel', { ns: 'research' })}
             </InputLabel>
             <Select
               value={selectedCoordinator}
               onChange={(e) => setSelectedCoordinator(e.target.value)}
-              label="Filtrar por Coordenador"
+              label={t('filterLabel', { ns: 'research' })}
               sx={{
                 '& .MuiSelect-select': {
                   py: 1.5,
                 },
               }}
             >
-              <MenuItem value="all">Todos os Coordenadores ({researchProjects.length})</MenuItem>
+              <MenuItem value="all">{t('allCoordinators', { ns: 'research' })} ({researchProjects.length})</MenuItem>
               {coordinatorsList.map((coordinator) => (
                 <MenuItem key={coordinator} value={coordinator}>
                   {coordinator} ({researchProjects.filter(p => p.coordinators.includes(coordinator)).length})
@@ -148,7 +150,7 @@ export default function Research() {
         {sortedProjects.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <Typography variant="h6" color="text.secondary">
-              Nenhum projeto encontrado para este coordenador.
+              {t('empty', { ns: 'research' })}
             </Typography>
           </Box>
         ) : (
@@ -166,7 +168,7 @@ export default function Research() {
                       transform: 'translateY(-4px)',
                       boxShadow: 3,
                     },
-                    borderLeft: `4px solid ${project.status === 'Em andamento' ? '#4caf50' : '#9e9e9e'}`,
+                    borderLeft: `4px solid ${project.status === 'ongoing' ? '#4caf50' : '#9e9e9e'}`,
                   }}
                 >
                   <CardContent>
@@ -193,9 +195,9 @@ export default function Research() {
 
                         <Stack direction="row" spacing={1}>
                           <Chip
-                            label={project.status}
+                            label={t(`status.${project.status}`, { ns: 'common' })}
                             size="small"
-                            color={project.status === 'Em andamento' ? 'success' : 'default'}
+                            color={project.status === 'ongoing' ? 'success' : 'default'}
                             sx={{ fontSize: '0.7rem' }}
                           />
                           <Stack direction="row" spacing={0.5}>
@@ -252,7 +254,7 @@ export default function Research() {
                                 <AddIcon fontSize="small" />
                               )}
                             >
-                              {expanded ? 'Menos' : 'Mais'}
+                              {expanded ? t('actions.showLess', { ns: 'common' }) : t('actions.showMore', { ns: 'common' })}
                             </Button>
                           </Box>
                         )}
@@ -264,7 +266,7 @@ export default function Research() {
                           {project.students.undergraduate && (
                             <Chip
                               icon={<GroupIcon />}
-                              label={`Graduação: ${project.students.undergraduate}`}
+                              label={`${t('students.undergraduate', { ns: 'research' })}: ${project.students.undergraduate}`}
                               size="small"
                               variant="outlined"
                             />
@@ -272,7 +274,7 @@ export default function Research() {
                           {project.students.masters && (
                             <Chip
                               icon={<GroupIcon />}
-                              label={`Mestrado: ${project.students.masters}`}
+                              label={`${t('students.masters', { ns: 'research' })}: ${project.students.masters}`}
                               size="small"
                               variant="outlined"
                             />
@@ -280,7 +282,7 @@ export default function Research() {
                           {project.students.professionalMasters && (
                             <Chip
                               icon={<GroupIcon />}
-                              label={`Mestrado Profissional: ${project.students.professionalMasters}`}
+                              label={`${t('students.professionalMasters', { ns: 'research' })}: ${project.students.professionalMasters}`}
                               size="small"
                               variant="outlined"
                             />
@@ -288,7 +290,7 @@ export default function Research() {
                           {project.students.doctorate && (
                             <Chip
                               icon={<GroupIcon />}
-                              label={`Doutorado: ${project.students.doctorate}`}
+                              label={`${t('students.doctorate', { ns: 'research' })}: ${project.students.doctorate}`}
                               size="small"
                               variant="outlined"
                             />
@@ -299,7 +301,7 @@ export default function Research() {
                       {/* Coordenador */}
                       <Box>
                         <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                          Coordenadores:
+                          {t('coordinators', { ns: 'research' })}
                         </Typography>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                           {project.coordinators.map((coordinator, idx) => (
@@ -317,7 +319,7 @@ export default function Research() {
                       {/* Integrantes */}
                       <Box>
                         <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                          Integrantes:
+                          {t('researchers', { ns: 'research' })}
                         </Typography>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                           {project.researchers.map((researcher, idx) => (

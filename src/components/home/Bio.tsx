@@ -10,11 +10,21 @@ import { alpha } from '@mui/material/styles';
 import SchoolIcon from '@mui/icons-material/School';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import { useTranslation } from 'react-i18next';
 import perfil from '../../assets/perfil_lucena.png';
-import { interests } from '../../data/interests';
 import { socialLinks } from '../../data/SocialLinks';
 
+type HeroEducation = {
+  title: string;
+  period: string;
+  place: string;
+};
+
 export default function Bio() {
+  const { t } = useTranslation('home');
+  const education = t('bio.education', { returnObjects: true }) as HeroEducation[];
+  const interests = t('bio.interests', { returnObjects: true }) as string[];
+
   return (
     <Box
       id="hero"
@@ -41,7 +51,7 @@ export default function Bio() {
             />
 
             <Typography variant="h2" sx={{ fontWeight: 600 }}>
-              Rachel Lucena, D.Sc
+              {t('bio.name')}
             </Typography>
 
             {/* <Typography variant="caption" sx={{ fontWeight: 600 }}>
@@ -54,7 +64,7 @@ export default function Bio() {
                 color: 'secondary.light',
               }),
             })}>
-              Professora Adjunta, UERJ
+              {t('bio.position')}
             </Typography>
 
 
@@ -68,7 +78,7 @@ export default function Bio() {
             </Typography> */}
 
             <Typography sx={{ color: alpha('#fff', 0.5), fontSize: 14 }}>
-              UERJ - Universidade do Estado do Rio de Janeiro
+              {t('bio.institution')}
             </Typography>
 
             {/* Redes Sociais - Ícones brancos, hover mostra cores originais */}
@@ -105,13 +115,11 @@ export default function Bio() {
             <Stack spacing={2}>
               <Typography variant="h5" sx={{ mb: 1, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <AccountCircleIcon sx={{ fontSize: 28 }} />
-                Professional Summary
+                {t('bio.summaryTitle')}
               </Typography>
 
               <Typography sx={{ color: alpha('#fff', 0.7), lineHeight: 1.6 }}>
-                Pesquisadora com experiência nas áreas de Engenharia Mecânica e Matemática,
-                com ênfase em princípios variacionais e métodos numéricos, desenvolvendo pesquisas principalmente nos seguintes temas:
-                simulação numérica, método dos elementos finitos, escoamento em meios porosos e escoamentos compressíveis.
+                {t('bio.summary')}
               </Typography>
 
               {/* Download CV */}
@@ -132,18 +140,13 @@ export default function Bio() {
             <Box>
               <Typography variant="h5" sx={{ mb: 2, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <SchoolIcon sx={{ fontSize: 28 }} />
-                Education
+                {t('bio.educationTitle')}
               </Typography>
 
               <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-                {[
-                  { title: 'Dsc in Mechanical Engineering', period: '2013 - 2016', place: 'UERJ' },
-                  { title: 'MSc in Metallurgical and Materials Engineering', period: '2011 - 2013', place: 'COPPE/UFRJ' },
-                  { title: 'BSc in Production Engineering', period: '2015 - 2021', place: 'CEFET/RJ' },
-                  { title: 'BSc in Mathematics', period: '2006 - 2010', place: 'UFRRJ' },
-                ].map((item, i) => (
+                {education.map((item) => (
                   <Box
-                    key={i}
+                    key={`${item.title}-${item.period}`}
                     sx={{
                       flex: 1,
                       p: 3,
@@ -174,13 +177,13 @@ export default function Bio() {
             <Box>
               <Typography variant="h5" sx={{ mb: 2, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <AutoAwesomeIcon sx={{ fontSize: 28 }} />
-                Interests
+                {t('bio.interestsTitle')}
               </Typography>
 
               <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1.5 }}>
-                {interests.map((interest, index) => (
+                {interests.map((interest) => (
                   <Chip
-                    key={index}
+                    key={interest}
                     label={interest}
                     sx={{
                       backgroundColor: '#f8f8f8',

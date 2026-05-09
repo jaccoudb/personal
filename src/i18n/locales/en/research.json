@@ -1,0 +1,15 @@
+{
+  "title": "Research Projects",
+  "subtitle": "Ongoing and completed research projects, organized chronologically",
+  "filterLabel": "Filter by Coordinator",
+  "allCoordinators": "All Coordinators",
+  "empty": "No project found for this coordinator.",
+  "coordinators": "Coordinators:",
+  "researchers": "Researchers:",
+  "students": {
+    "undergraduate": "Undergraduate",
+    "masters": "Master's",
+    "professionalMasters": "Professional Master's",
+    "doctorate": "Doctorate"
+  }
+}

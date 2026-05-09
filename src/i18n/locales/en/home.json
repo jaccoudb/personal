@@ -1,0 +1,33 @@
+{
+  "bio": {
+    "name": "Rachel Lucena, D.Sc",
+    "position": "Assistant Professor, UERJ",
+    "institution": "UERJ - Rio de Janeiro State University",
+    "summaryTitle": "Professional Summary",
+    "summary": "Researcher with experience in Mechanical Engineering and Mathematics, focused on variational principles and numerical methods. Her research includes numerical simulation, finite element methods, porous media flow and compressible flows.",
+    "educationTitle": "Education",
+    "interestsTitle": "Interests",
+    "education": [
+      { "title": "D.Sc. in Mechanical Engineering", "period": "2013 - 2016", "place": "UERJ" },
+      { "title": "M.Sc. in Metallurgical and Materials Engineering", "period": "2011 - 2013", "place": "COPPE/UFRJ" },
+      { "title": "B.Sc. in Production Engineering", "period": "2015 - 2021", "place": "CEFET/RJ" },
+      { "title": "B.Sc. in Mathematics Education", "period": "2006 - 2010", "place": "UFRRJ" }
+    ],
+    "interests": ["Numerical Methods", "Computational Fluid Dynamics", "Finite Element Method"]
+  },
+  "contact": {
+    "department": "Department of Mechanical Engineering - Rio de Janeiro State University (MECAN/UERJ)",
+    "program": "Graduate Program in Mechanical Engineering - Rio de Janeiro State University (PPG-EM/UERJ)",
+    "laboratory": "Laboratory: Environmental Studies and Reservoir Simulation Group - GESAR",
+    "address": "Rua Fonseca Teles, 121, Rio de Janeiro, ZIP 20940-903 RJ - Brazil",
+    "phoneEmail": "Phone: +55 (21) 2332-4733 | E-mail: rachel.lucena@eng.uerj.br",
+    "rights": "All rights reserved"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      { "question": "How can I get in touch?", "answer": "You can send an e-mail to rachel.lucena@eng.uerj.br." },
+      { "question": "What are the main research areas?", "answer": "Numerical methods, CFD, finite elements, porous media flow and biomedical applications." }
+    ]
+  }
+}
