@@ -187,6 +187,8 @@ Se o material pertence a um curso já cadastrado em `src/data/coursesData.ts`, e
 
 Isso faz com que a página de cursos (`/courses`) exiba um botão "Material do Curso" que leva para `/courses/meu-novo-curso/materials`, filtrando os materiais pelo `materialsId`.
 
+O slug é um identificador URL-friendly (sem acentos, espaços ou caracteres especiais) para cada curso. Ele é usado na rota /courses/:slug/materials — por exemplo, metodos-computacionais vira /courses/metodos-computacionais/materials. O CourseMaterialsPage pega o slug dos parâmetros da URL (useParams) e o usa para buscar o curso correspondente no array coursesData, tanto para exibir info do curso quanto para filtrar os materiais.
+
 **Arquitetura do fluxo:**
 
 ```

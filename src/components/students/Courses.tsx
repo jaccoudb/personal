@@ -228,13 +228,13 @@ export default function Courses() {
                                     >
                                         {t('viewSyllabus', { ns: 'courses' })}
                                     </Button>
-                                    {course.materialsRoute && (
+                                    {course.slug && (
                                         <Button
                                             size="small"
                                             variant="contained"
                                             color='secondary'
                                             component={RouterLink}
-                                            to={course.materialsRoute}
+                                            to={`/courses/${course.slug}/materials`}
                                             fullWidth
                                             startIcon={<FolderOpenIcon />}
                                             sx={{ borderRadius: 2 }}

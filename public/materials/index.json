@@ -1,36 +1,6 @@
 {
   "courses": [
     {
-      "id": "calculo-numerico",
-      "title": {
-        "pt-BR": "Cálculo Numérico",
-        "en": "Numerical Analysis",
-        "fr": "Calcul Numérique"
-      },
-      "description": {
-        "pt-BR": "Materiais do curso.",
-        "en": "Course materials.",
-        "fr": "Supports du cours."
-      },
-      "materials": [
-        {
-          "title": "Aula 01",
-          "file": "calculo-numerico/aula-01.pdf",
-          "type": "pdf"
-        },
-        {
-          "title": "Aula 02",
-          "file": "calculo-numerico/aula-02.pdf",
-          "type": "pdf"
-        },
-        {
-          "title": "Lista 01",
-          "file": "calculo-numerico/lista-01.pdf",
-          "type": "pdf"
-        }
-      ]
-    },
-    {
       "id": "metodos-numericos-2026-1",
       "title": {
         "pt-BR": "2026/1",

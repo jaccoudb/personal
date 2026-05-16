@@ -11,7 +11,6 @@ export interface Course {
   workload: number;
   slug: string;
   classCode?: string;
-  materialsRoute: string;
   materialsId: string;
 }
 
@@ -51,7 +50,6 @@ export const courses: Course[] = [
     credits: 4,
     workload: 60,
     slug: "metodos-computacionais",
-    materialsRoute: "/courses/metodos-computacionais/materials",
     materialsId: "metodos-numericos-2026-1",
   },
   {
@@ -86,8 +84,7 @@ export const courses: Course[] = [
     ],
     credits: 3,
     workload: 60,
-    slug: "fenomenos-transporte",
-    materialsRoute: "",
-    materialsId: "",
+    slug: "fenomenos",
+    materialsId: "metodos-numericos-2026-1",
   },
 ];
