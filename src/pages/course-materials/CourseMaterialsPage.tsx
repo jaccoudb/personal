@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
@@ -13,7 +13,8 @@ import Typography from '@mui/material/Typography';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import MaterialCard from '../../components/course-materials/MaterialCard';
 import { loadCourseMaterials } from '../../services/courseMaterialsService';
-import type { CourseIndex, LocalizedText } from '../../types/course-materials';
+import { courses as coursesData } from '../../data/coursesData';
+import type { CourseIndex, LocalizedText, Course as MaterialCourse } from '../../types/course-materials';
 import type { SupportedLanguage } from '../../i18n';
 
 function normalizeLanguage(language: string): SupportedLanguage {
@@ -27,6 +28,7 @@ function getLocalizedText(text: LocalizedText, language: SupportedLanguage): str
 }
 
 export default function CourseMaterialsPage() {
+  const { slug } = useParams<{ slug?: string }>();
   const { t, i18n } = useTranslation(['course-materials', 'common']);
   const [courseIndex, setCourseIndex] = React.useState<CourseIndex | null>(null);
   const [loading, setLoading] = React.useState(true);
@@ -63,6 +65,20 @@ export default function CourseMaterialsPage() {
     };
   }, [t]);
 
+  const filteredCourses: MaterialCourse[] = React.useMemo(() => {
+    if (!courseIndex) return [];
+    if (!slug) return courseIndex.courses;
+    const courseEntry = coursesData.find((c) => c.slug === slug);
+    if (!courseEntry || !courseEntry.materialsId) return [];
+    return courseIndex.courses.filter((c) => c.id === courseEntry.materialsId);
+  }, [slug, courseIndex]);
+
+  const courseName = React.useMemo(() => {
+    if (!slug) return null;
+    const entry = coursesData.find((c) => c.slug === slug);
+    return entry?.name ?? null;
+  }, [slug]);
+
   return (
     <Box
       id="course-materials"
@@ -84,7 +100,7 @@ export default function CourseMaterialsPage() {
                 {t('nav.courses', { ns: 'common' })}
               </Link>
               <Typography color="text.primary">
-                {t('title', { ns: 'course-materials' })}
+                {courseName ?? t('title', { ns: 'course-materials' })}
               </Typography>
             </Breadcrumbs>
 
@@ -98,11 +114,13 @@ export default function CourseMaterialsPage() {
                   fontSize: { xs: '2.25rem', md: '3.5rem' },
                 }}
               >
-                {t('title', { ns: 'course-materials' })}
+                {courseName ?? t('title', { ns: 'course-materials' })}
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-                {t('description', { ns: 'course-materials' })}
-              </Typography>
+              {!slug && (
+                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
+                  {t('description', { ns: 'course-materials' })}
+                </Typography>
+              )}
             </Box>
           </Stack>
 
@@ -121,13 +139,13 @@ export default function CourseMaterialsPage() {
             </Alert>
           )}
 
-          {!loading && !error && courseIndex?.courses.length === 0 && (
+          {!loading && !error && filteredCourses.length === 0 && (
             <Alert severity="info">
               {t('empty', { ns: 'course-materials' })}
             </Alert>
           )}
 
-          {!loading && !error && courseIndex?.courses.map((course) => (
+          {!loading && !error && filteredCourses.map((course) => (
             <Box key={course.id}>
               <Stack spacing={1} sx={{ mb: 3 }}>
                 <Typography variant="h4" component="h2" sx={{ fontWeight: 700 }}>

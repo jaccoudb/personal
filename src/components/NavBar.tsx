@@ -28,7 +28,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   padding: '0 24px',
 }));
 
-export default function AppAppBar() {
+export default function NavBar() {
   const { t } = useTranslation('common');
   const navigate = useNavigate();
   const location = useLocation();

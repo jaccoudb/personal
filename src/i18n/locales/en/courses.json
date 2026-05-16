@@ -6,6 +6,7 @@
   "syllabus": "Syllabus",
   "additionalInfo": "Additional Information",
   "courseMaterials": "Course Materials",
+  "viewMaterials": "View Materials",
   "credits": "{{count}} credits",
   "hours": "{{count}} hours",
   "creditsWorkload": "{{credits}} credits | {{workload}}h"

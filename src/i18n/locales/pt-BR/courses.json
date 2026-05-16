@@ -6,6 +6,7 @@
   "syllabus": "Ementa",
   "additionalInfo": "Informações Adicionais",
   "courseMaterials": "Material do Curso",
+  "viewMaterials": "Ver Materiais",
   "credits": "{{count}} créditos",
   "hours": "{{count}} horas",
   "creditsWorkload": "{{credits}} créditos | {{workload}}h"

@@ -89,7 +89,7 @@ export default function Courses() {
                     {t('subtitle', { ns: 'courses' })}
                 </Typography>
 
-                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
+                {/* <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
                     <Button
                         component={RouterLink}
                         to="/courses/materials"
@@ -100,7 +100,7 @@ export default function Courses() {
                     >
                         {t('courseMaterials', { ns: 'courses' })}
                     </Button>
-                </Box>
+                </Box> */}
 
                 {/* CSS Grid com auto-fit para centralizar */}
                 <Box
@@ -218,7 +218,7 @@ export default function Courses() {
                                         </Stack>
                                     </Box>
                                 </CardContent>
-                                <CardActions sx={{ p: 2, pt: 0, pb: 2.5 }}>
+                                <CardActions sx={{ p: 2, pt: 0, pb: 2.5, flexDirection: 'column', gap: 1 }}>
                                     <Button
                                         size="small"
                                         variant="outlined"
@@ -228,6 +228,20 @@ export default function Courses() {
                                     >
                                         {t('viewSyllabus', { ns: 'courses' })}
                                     </Button>
+                                    {course.materialsRoute && (
+                                        <Button
+                                            size="small"
+                                            variant="contained"
+                                            color='secondary'
+                                            component={RouterLink}
+                                            to={course.materialsRoute}
+                                            fullWidth
+                                            startIcon={<FolderOpenIcon />}
+                                            sx={{ borderRadius: 2 }}
+                                        >
+                                            {t('viewMaterials', { ns: 'courses' })}
+                                        </Button>
+                                    )}
                                 </CardActions>
                             </Card>
                         );
